@@ -79,6 +79,65 @@
             color: white;
         }
         
+        /* Smooth transitions and animations */
+        * {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .pulse-on-hover:hover {
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Enhanced button styles */
+        .btn-primary {
+            background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+        
+        /* Loading animation for sections */
+        .section-loading {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .section-loaded {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+
         /* Mobile optimizations */
         @media (max-width: 768px) {
             .container { padding-left: 1rem; padding-right: 1rem; }
@@ -186,13 +245,13 @@
             <!-- Hero Section -->
             <div class="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
                 <div class="container mx-auto px-6 text-center">
-                    <h2 class="text-4xl md:text-6xl font-bold mb-6 text-gray-800 leading-tight">Leis Trabalhistas</h2>
-                    <p class="text-xl md:text-2xl mb-8 text-gray-600">Democratizando o Conhecimento Jurídico</p>
+                    <h2 class="text-4xl md:text-6xl font-bold mb-6 gradient-text leading-tight floating">Leis Trabalhistas</h2>
+                    <p class="text-xl md:text-2xl mb-8 text-gray-600 animate-pulse">Democratizando o Conhecimento Jurídico</p>
                     <p class="text-lg max-w-3xl mx-auto mb-10 leading-relaxed text-gray-700">
                         Um projeto acadêmico dedicado a tornar as leis trabalhistas acessíveis e compreensíveis para comerciantes e toda a comunidade, promovendo relações de trabalho mais justas e informadas.
                     </p>
-                    <button onclick="showSection('faq')" class="bg-primary text-white px-6 sm:px-8 py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors shadow-lg text-sm sm:text-base">
-                        Explore as Principais Dúvidas
+                    <button onclick="showSection('faq')" class="btn-primary text-white px-6 sm:px-8 py-3 rounded-lg font-semibold text-sm sm:text-base pulse-on-hover">
+                        🔍 Explore as Principais Dúvidas
                     </button>
                 </div>
             </div>
@@ -207,31 +266,31 @@
                         </p>
                     </div>
                     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                        <div class="text-center p-6 bg-blue-50 rounded-xl hover:shadow-lg transition-all duration-300">
-                            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div class="text-center p-6 bg-blue-50 rounded-xl hover-lift cursor-pointer">
+                            <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 floating">
                                 <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                 </svg>
                             </div>
-                            <h4 class="text-xl font-bold mb-3 text-gray-800">Educação Acessível</h4>
+                            <h4 class="text-xl font-bold mb-3 text-gray-800">📚 Educação Acessível</h4>
                             <p class="text-gray-600">Transformar linguagem jurídica complexa em conteúdo claro e compreensível para todos os públicos.</p>
                         </div>
-                        <div class="text-center p-6 bg-green-50 rounded-xl hover:shadow-lg transition-all duration-300">
-                            <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div class="text-center p-6 bg-green-50 rounded-xl hover-lift cursor-pointer">
+                            <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 floating" style="animation-delay: 0.5s;">
                                 <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
                                 </svg>
                             </div>
-                            <h4 class="text-xl font-bold mb-3 text-gray-800">Impacto Social</h4>
+                            <h4 class="text-xl font-bold mb-3 text-gray-800">🤝 Impacto Social</h4>
                             <p class="text-gray-600">Promover relações de trabalho mais justas através do conhecimento e conscientização sobre direitos fundamentais.</p>
                         </div>
-                        <div class="text-center p-6 bg-yellow-50 rounded-xl hover:shadow-lg transition-all duration-300">
-                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div class="text-center p-6 bg-yellow-50 rounded-xl hover-lift cursor-pointer">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 floating" style="animation-delay: 1s;">
                                 <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
                                 </svg>
                             </div>
-                            <h4 class="text-xl font-bold mb-3 text-gray-800">Aplicação Prática</h4>
+                            <h4 class="text-xl font-bold mb-3 text-gray-800">⚖️ Aplicação Prática</h4>
                             <p class="text-gray-600">Oferecer orientações específicas para comerciantes e trabalhadores sobre situações reais do cotidiano.</p>
                         </div>
                     </div>
@@ -302,33 +361,45 @@
                     </p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-5xl mx-auto">
-                    <div class="text-center p-6 bg-blue-50 rounded-xl hover:shadow-lg transition-all duration-300">
-                        <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl font-bold text-white">PT</span>
+                    <div class="text-center p-6 bg-blue-50 rounded-xl hover-lift cursor-pointer">
+                        <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 pulse-on-hover">
+                            <span class="text-2xl font-bold text-white">💻</span>
                         </div>
                         <h3 class="text-lg font-bold text-gray-800 mb-2">Pedro Teixeira</h3>
                         <p class="text-gray-600">Desenvolvedor Web</p>
+                        <div class="mt-3 text-xs text-blue-600 bg-blue-100 px-3 py-1 rounded-full inline-block">
+                            Frontend & Backend
+                        </div>
                     </div>
-                    <div class="text-center p-6 bg-green-50 rounded-xl hover:shadow-lg transition-all duration-300">
-                        <div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl font-bold text-white">JD</span>
+                    <div class="text-center p-6 bg-green-50 rounded-xl hover-lift cursor-pointer">
+                        <div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 pulse-on-hover">
+                            <span class="text-2xl font-bold text-white">📚</span>
                         </div>
                         <h3 class="text-lg font-bold text-gray-800 mb-2">João Vitor Dantas</h3>
                         <p class="text-gray-600">Pesquisador Principal</p>
+                        <div class="mt-3 text-xs text-green-600 bg-green-100 px-3 py-1 rounded-full inline-block">
+                            Direito Trabalhista
+                        </div>
                     </div>
-                    <div class="text-center p-6 bg-yellow-50 rounded-xl hover:shadow-lg transition-all duration-300">
-                        <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl font-bold text-white">EP</span>
+                    <div class="text-center p-6 bg-yellow-50 rounded-xl hover-lift cursor-pointer">
+                        <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 pulse-on-hover">
+                            <span class="text-2xl font-bold text-white">🎨</span>
                         </div>
                         <h3 class="text-lg font-bold text-gray-800 mb-2">Enzo Peixoto</h3>
                         <p class="text-gray-600">Designer</p>
+                        <div class="mt-3 text-xs text-yellow-600 bg-yellow-100 px-3 py-1 rounded-full inline-block">
+                            UI/UX Design
+                        </div>
                     </div>
-                    <div class="text-center p-6 bg-purple-50 rounded-xl hover:shadow-lg transition-all duration-300">
-                        <div class="w-20 h-20 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl font-bold text-white">LA</span>
+                    <div class="text-center p-6 bg-purple-50 rounded-xl hover-lift cursor-pointer">
+                        <div class="w-20 h-20 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 pulse-on-hover">
+                            <span class="text-2xl font-bold text-white">⚡</span>
                         </div>
                         <h3 class="text-lg font-bold text-gray-800 mb-2">Luísa de Almeida</h3>
                         <p class="text-gray-600">Co-Desenvolvedora</p>
+                        <div class="mt-3 text-xs text-purple-600 bg-purple-100 px-3 py-1 rounded-full inline-block">
+                            Full Stack
+                        </div>
                     </div>
                 </div>
                 <div class="mt-12 bg-gray-50 rounded-xl p-8 max-w-4xl mx-auto">
@@ -524,8 +595,8 @@
                     <div class="faq-item border border-gray-200 rounded-lg">
                         <button class="faq-question w-full text-left p-6 hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
-                                <h3 class="text-lg font-semibold text-navy">Quantas horas posso trabalhar por dia?</h3>
-                                <span class="faq-icon text-2xl text-navy">+</span>
+                                <h3 class="text-lg font-semibold text-navy">⏰ Quantas horas posso trabalhar por dia?</h3>
+                                <span class="faq-icon text-2xl text-navy transition-transform duration-300">+</span>
                             </div>
                         </button>
                         <div class="faq-answer hidden p-6 pt-0 text-gray-700">
@@ -536,8 +607,8 @@
                     <div class="faq-item border border-gray-200 rounded-lg">
                         <button class="faq-question w-full text-left p-6 hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
-                                <h3 class="text-lg font-semibold text-navy">Tenho direito a férias remuneradas?</h3>
-                                <span class="faq-icon text-2xl text-navy">+</span>
+                                <h3 class="text-lg font-semibold text-navy">🏖️ Tenho direito a férias remuneradas?</h3>
+                                <span class="faq-icon text-2xl text-navy transition-transform duration-300">+</span>
                             </div>
                         </button>
                         <div class="faq-answer hidden p-6 pt-0 text-gray-700">
@@ -545,11 +616,11 @@
                         </div>
                     </div>
                     
-                    <div class="faq-item border border-gray-200 rounded-lg">
+                    <div class="faq-item border border-gray-200 rounded-lg hover-lift">
                         <button class="faq-question w-full text-left p-6 hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
-                                <h3 class="text-lg font-semibold text-navy">O que é o 13º salário e quando recebo?</h3>
-                                <span class="faq-icon text-2xl text-navy">+</span>
+                                <h3 class="text-lg font-semibold text-navy">🎄 O que é o 13º salário e quando recebo?</h3>
+                                <span class="faq-icon text-2xl text-navy transition-transform duration-300">+</span>
                             </div>
                         </button>
                         <div class="faq-answer hidden p-6 pt-0 text-gray-700">
@@ -557,11 +628,11 @@
                         </div>
                     </div>
                     
-                    <div class="faq-item border border-gray-200 rounded-lg">
+                    <div class="faq-item border border-gray-200 rounded-lg hover-lift">
                         <button class="faq-question w-full text-left p-6 hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
-                                <h3 class="text-lg font-semibold text-navy">Posso ser demitido sem justa causa?</h3>
-                                <span class="faq-icon text-2xl text-navy">+</span>
+                                <h3 class="text-lg font-semibold text-navy">📋 Posso ser demitido sem justa causa?</h3>
+                                <span class="faq-icon text-2xl text-navy transition-transform duration-300">+</span>
                             </div>
                         </button>
                         <div class="faq-answer hidden p-6 pt-0 text-gray-700">
@@ -569,11 +640,11 @@
                         </div>
                     </div>
                     
-                    <div class="faq-item border border-gray-200 rounded-lg">
+                    <div class="faq-item border border-gray-200 rounded-lg hover-lift">
                         <button class="faq-question w-full text-left p-6 hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
-                                <h3 class="text-lg font-semibold text-navy">O que caracteriza assédio moral no trabalho?</h3>
-                                <span class="faq-icon text-2xl text-navy">+</span>
+                                <h3 class="text-lg font-semibold text-navy">🚫 O que caracteriza assédio moral no trabalho?</h3>
+                                <span class="faq-icon text-2xl text-navy transition-transform duration-300">+</span>
                             </div>
                         </button>
                         <div class="faq-answer hidden p-6 pt-0 text-gray-700">
@@ -581,11 +652,11 @@
                         </div>
                     </div>
                     
-                    <div class="faq-item border border-gray-200 rounded-lg">
+                    <div class="faq-item border border-gray-200 rounded-lg hover-lift">
                         <button class="faq-question w-full text-left p-6 hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
-                                <h3 class="text-lg font-semibold text-navy">Trabalho aos domingos é permitido?</h3>
-                                <span class="faq-icon text-2xl text-navy">+</span>
+                                <h3 class="text-lg font-semibold text-navy">📅 Trabalho aos domingos é permitido?</h3>
+                                <span class="faq-icon text-2xl text-navy transition-transform duration-300">+</span>
                             </div>
                         </button>
                         <div class="faq-answer hidden p-6 pt-0 text-gray-700">
@@ -861,6 +932,13 @@
 
     </main>
 
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg hover:bg-primary-dark transition-all duration-300 opacity-0 invisible hover:scale-110 z-50">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-6">
@@ -895,8 +973,11 @@
     </footer>
 
     <script>
-        // Navigation functionality
+        // Navigation functionality with loading animation
         function showSection(sectionId) {
+            // Show loading indicator
+            showLoadingIndicator();
+            
             // Hide all sections
             const sections = document.querySelectorAll('section');
             sections.forEach(section => {
@@ -904,22 +985,29 @@
                 section.classList.add('section-hidden');
             });
             
-            // Show selected section
-            const targetSection = document.getElementById(sectionId);
-            if (targetSection) {
-                targetSection.classList.remove('section-hidden');
-                targetSection.classList.add('section-active');
-                
-                // Add fade-in animation
-                targetSection.classList.remove('fade-in');
-                setTimeout(() => {
-                    targetSection.classList.add('fade-in');
-                }, 10);
-            }
+            // Show selected section with delay for smooth transition
+            setTimeout(() => {
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.classList.remove('section-hidden');
+                    targetSection.classList.add('section-active');
+                    
+                    // Add loading animation
+                    targetSection.classList.add('section-loading');
+                    setTimeout(() => {
+                        targetSection.classList.remove('section-loading');
+                        targetSection.classList.add('section-loaded');
+                        hideLoadingIndicator();
+                    }, 300);
+                }
+            }, 200);
             
             // Update active nav button
             const navButtons = document.querySelectorAll('.nav-btn');
-            navButtons.forEach(btn => btn.classList.remove('text-blue-200'));
+            navButtons.forEach(btn => btn.classList.remove('text-blue-200', 'bg-blue-600'));
+            
+            // Highlight active button
+            event.target.classList.add('text-blue-200', 'bg-blue-600');
             
             // Close mobile menu
             const mobileMenu = document.getElementById('mobile-menu');
@@ -928,6 +1016,42 @@
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+        
+        // Loading indicator functions
+        function showLoadingIndicator() {
+            const existingLoader = document.getElementById('page-loader');
+            if (existingLoader) return;
+            
+            const loader = document.createElement('div');
+            loader.id = 'page-loader';
+            loader.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 4px;
+                    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+                    background-size: 200% 100%;
+                    animation: loading 1s ease-in-out infinite;
+                    z-index: 9999;
+                "></div>
+                <style>
+                    @keyframes loading {
+                        0% { background-position: 200% 0; }
+                        100% { background-position: -200% 0; }
+                    }
+                </style>
+            `;
+            document.body.appendChild(loader);
+        }
+        
+        function hideLoadingIndicator() {
+            const loader = document.getElementById('page-loader');
+            if (loader) {
+                setTimeout(() => loader.remove(), 200);
+            }
+        }
 
         // Mobile menu toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
@@ -935,19 +1059,39 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // FAQ functionality
+        // Enhanced FAQ functionality
         function toggleFAQ(button) {
             const faqItem = button.parentElement;
             const answer = faqItem.querySelector('.faq-answer');
             const icon = button.querySelector('.faq-icon');
             
+            // Close all other FAQs
+            const allFAQs = document.querySelectorAll('.faq-item');
+            allFAQs.forEach(item => {
+                if (item !== faqItem) {
+                    const otherAnswer = item.querySelector('.faq-answer');
+                    const otherIcon = item.querySelector('.faq-icon');
+                    const otherButton = item.querySelector('.faq-question');
+                    
+                    otherAnswer.classList.add('hidden');
+                    otherIcon.textContent = '+';
+                    otherIcon.style.transform = 'rotate(0deg)';
+                    otherButton.classList.remove('bg-gray-50');
+                }
+            });
+            
             if (answer.classList.contains('hidden')) {
                 answer.classList.remove('hidden');
                 icon.textContent = '−';
+                icon.style.transform = 'rotate(180deg)';
                 button.classList.add('bg-gray-50');
+                
+                // Smooth scroll to FAQ item
+                faqItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
                 answer.classList.add('hidden');
                 icon.textContent = '+';
+                icon.style.transform = 'rotate(0deg)';
                 button.classList.remove('bg-gray-50');
             }
         }
@@ -1033,6 +1177,28 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Show home section by default
             showSection('home');
+            
+            // Back to top button functionality
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            // Show/hide back to top button based on scroll position
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.remove('opacity-0', 'invisible');
+                    backToTopBtn.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopBtn.classList.add('opacity-0', 'invisible');
+                    backToTopBtn.classList.remove('opacity-100', 'visible');
+                }
+            });
+            
+            // Smooth scroll to top when clicked
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
             
             // Audio Player controls
             const playPauseBtn = document.getElementById('playPauseBtn');
@@ -1150,5 +1316,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'973bde4fd136f626',t:'MTc1NTk2NTMwNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'973c16a620e7f61b',t:'MTc1NTk2NzYxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
