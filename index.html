@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direitos Trabalhistas - Trabalho Escolar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6;
+        }
+        
+        .professional-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+        }
+        
+        .secondary-gradient {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        
+        .card-professional {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .card-professional:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border-color: #3b82f6;
+        }
+        
+        .faq-professional {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .faq-professional:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .faq-answer.active {
+            max-height: 250px;
+        }
+        
+        .professional-podcast {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            border: 1px solid #374151;
+        }
+        
+        .stats-counter {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .team-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e2e8f0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #3b82f6;
+        }
+        
+        .professional-badge {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        }
+        
+        .section-divider {
+            background: linear-gradient(90deg, transparent 0%, #e2e8f0 50%, transparent 100%);
+            height: 1px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="professional-badge text-white p-2 rounded-lg">
+                        <span class="text-xl font-bold">⚖️</span>
+                    </div>
+                    <span class="text-xl font-bold text-gray-800">Direitos Trabalhistas</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-gray-600 hover:text-blue-600 font-medium transition duration-300">Início</a>
+                    <a href="#direitos" class="text-gray-600 hover:text-blue-600 font-medium transition duration-300">Direitos</a>
+                    <a href="#faq" class="text-gray-600 hover:text-blue-600 font-medium transition duration-300">FAQ</a>
+                    <a href="#podcast" class="text-gray-600 hover:text-blue-600 font-medium transition duration-300">Podcast</a>
+                    <a href="#equipe" class="text-gray-600 hover:text-blue-600 font-medium transition duration-300">Equipe</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="inicio" class="professional-gradient text-white py-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="mb-8">
+                    <span class="bg-white bg-opacity-20 text-white px-4 py-2 rounded-full text-sm font-medium">
+                        Projeto Educacional 2025
+                    </span>
+                </div>
+                <h1 class="text-6xl font-bold mb-6 leading-tight">
+                    Direitos <span class="text-blue-200">Trabalhistas</span>
+                </h1>
+                <p class="text-xl opacity-90 mb-10 max-w-2xl mx-auto">
+                    Um guia completo sobre seus direitos e deveres no ambiente de trabalho brasileiro, desenvolvido com rigor acadêmico e clareza didática.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <button onclick="scrollToSection('direitos')" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 shadow-lg">
+                        Explorar Direitos
+                    </button>
+                    <button onclick="scrollToSection('podcast')" class="border-2 border-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300">
+                        Ouça o Podcast
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                <div class="stats-counter text-center p-6 rounded-xl">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">180+</div>
+                    <div class="text-gray-600 font-medium">Artigos da CLT</div>
+                </div>
+                <div class="stats-counter text-center p-6 rounded-xl">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">15</div>
+                    <div class="text-gray-600 font-medium">Direitos Fundamentais</div>
+                </div>
+                <div class="stats-counter text-center p-6 rounded-xl">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">100%</div>
+                    <div class="text-gray-600 font-medium">Trabalhadores Protegidos</div>
+                </div>
+                <div class="stats-counter text-center p-6 rounded-xl">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">1943</div>
+                    <div class="text-gray-600 font-medium">Ano da CLT</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introdução -->
+    <section class="py-20 secondary-gradient">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Fundamentos dos Direitos Trabalhistas</h2>
+                    <p class="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+                        Os direitos trabalhistas constituem um conjunto de garantias fundamentais estabelecidas pela Constituição Federal de 1988 e pela Consolidação das Leis do Trabalho (CLT), criando um framework jurídico robusto para a proteção dos trabalhadores brasileiros.
+                    </p>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Marco Legal Brasileiro</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="professional-badge text-white p-2 rounded-lg flex-shrink-0">
+                                    <span class="text-sm font-bold">1943</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Consolidação das Leis do Trabalho (CLT)</h4>
+                                    <p class="text-gray-600">Criação do primeiro código trabalhista unificado do Brasil</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="professional-badge text-white p-2 rounded-lg flex-shrink-0">
+                                    <span class="text-sm font-bold">1988</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Constituição Federal</h4>
+                                    <p class="text-gray-600">Ampliação e constitucionalização dos direitos trabalhistas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 gap-6">
+                        <div class="card-professional bg-white p-8 rounded-xl">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="text-3xl">⚖️</div>
+                                <h3 class="text-xl font-bold text-gray-800">Proteção Jurídica</h3>
+                            </div>
+                            <p class="text-gray-600">Sistema legal abrangente que garante direitos fundamentais e estabelece deveres mútuos entre empregadores e empregados.</p>
+                        </div>
+                        
+                        <div class="card-professional bg-white p-8 rounded-xl">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <div class="text-3xl">🏛️</div>
+                                <h3 class="text-xl font-bold text-gray-800">Justiça do Trabalho</h3>
+                            </div>
+                            <p class="text-gray-600">Órgão especializado do Poder Judiciário responsável por dirimir conflitos trabalhistas e garantir o cumprimento da legislação.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="card-professional bg-white p-8 rounded-xl text-center">
+                        <div class="professional-badge text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                            <span class="text-2xl">💰</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Remuneração Digna</h3>
+                        <p class="text-gray-600 mb-4">Garantia de salário mínimo nacional, 13º salário, adicional de férias e outros benefícios remuneratórios.</p>
+                        <div class="text-sm text-blue-600 font-medium">Artigos 7º, IV e VIII da CF/88</div>
+                    </div>
+                    
+                    <div class="card-professional bg-white p-8 rounded-xl text-center">
+                        <div class="professional-badge text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                            <span class="text-2xl">🛡️</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Proteção Social</h3>
+                        <p class="text-gray-600 mb-4">FGTS, seguro-desemprego, auxílio-doença e demais benefícios da seguridade social trabalhista.</p>
+                        <div class="text-sm text-blue-600 font-medium">Lei 8.036/90 e Lei 7.998/90</div>
+                    </div>
+                    
+                    <div class="card-professional bg-white p-8 rounded-xl text-center">
+                        <div class="professional-badge text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                            <span class="text-2xl">⏰</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Jornada Regulamentada</h3>
+                        <p class="text-gray-600 mb-4">Limitação da jornada de trabalho, descanso semanal remunerado e regulamentação de horas extras.</p>
+                        <div class="text-sm text-blue-600 font-medium">Artigo 7º, XIII e XV da CF/88</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Principais Direitos -->
+    <section id="direitos" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Catálogo de Direitos Trabalhistas</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Conheça os principais direitos garantidos pela legislação trabalhista brasileira, organizados por categoria para facilitar sua compreensão.
+                    </p>
+                </div>
+
+                <!-- Direitos Fundamentais -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Direitos Fundamentais</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="card-professional bg-white p-8 rounded-xl">
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="professional-badge text-white p-3 rounded-lg">
+                                    <span class="text-xl">📅</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-800">Jornada de Trabalho</h4>
+                                    <div class="text-sm text-blue-600 font-medium">Art. 7º, XIII, CF/88</div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">Duração máxima de 8 horas diárias e 44 horas semanais, com possibilidade de compensação e banco de horas.</p>
+                            <div class="text-sm text-gray-500">
+                                <strong>Exceções:</strong> Turnos ininterruptos de revezamento (6h), menores (6h)
+                            </div>
+                        </div>
+
+                        <div class="card-professional bg-white p-8 rounded-xl">
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="professional-badge text-white p-3 rounded-lg">
+                                    <span class="text-xl">💰</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-800">Salário Mínimo</h4>
+                                    <div class="text-sm text-blue-600 font-medium">Art. 7º, IV, CF/88</div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">Piso salarial nacional unificado, capaz de atender às necessidades vitais básicas do trabalhador e sua família.</p>
+                            <div class="text-sm text-gray-500">
+                                <strong>Reajuste:</strong> Anual, considerando inflação e crescimento econômico
+                            </div>
+                        </div>
+
+                        <div class="card-professional bg-white p-8 rounded-xl">
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="professional-badge text-white p-3 rounded-lg">
+                                    <span class="text-xl">🏖️</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-800">Férias Anuais</h4>
+                                    <div class="text-sm text-blue-600 font-medium">Art. 129-153, CLT</div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">30 dias de descanso remunerado após cada período aquisitivo de 12 meses, com adicional de 1/3 sobre o salário.</p>
+                            <div class="text-sm text-gray-500">
+                                <strong>Fracionamento:</strong> Até 3 períodos, sendo um de no mínimo 14 dias
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Direitos Remuneratórios -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Direitos Remuneratórios</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="card-professional bg-white p-6 rounded-xl text-center">
+                            <div class="professional-badge text-white p-3 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-4">
+                                <span class="text-lg">🎄</span>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">13º Salário</h4>
+                            <p class="text-gray-600 text-sm mb-3">Gratificação natalina equivalente a 1/12 da remuneração por mês trabalhado</p>
+                            <div class="text-xs text-blue-600 font-medium">Lei 4.090/62</div>
+                        </div>
+
+                        <div class="card-professional bg-white p-6 rounded-xl text-center">
+                            <div class="professional-badge text-white p-3 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-4">
+                                <span class="text-lg">⏰</span>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">Horas Extras</h4>
+                            <p class="text-gray-600 text-sm mb-3">Adicional mínimo de 50% sobre a hora normal, 100% em domingos e feriados</p>
+                            <div class="text-xs text-blue-600 font-medium">Art. 7º, XVI, CF/88</div>
+                        </div>
+
+                        <div class="card-professional bg-white p-6 rounded-xl text-center">
+                            <div class="professional-badge text-white p-3 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-4">
+                                <span class="text-lg">🌙</span>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">Adicional Noturno</h4>
+                            <p class="text-gray-600 text-sm mb-3">20% sobre a hora diurna para trabalho entre 22h e 5h</p>
+                            <div class="text-xs text-blue-600 font-medium">Art. 73, CLT</div>
+                        </div>
+
+                        <div class="card-professional bg-white p-6 rounded-xl text-center">
+                            <div class="professional-badge text-white p-3 rounded-full w-14 h-14 flex items-center justify-center mx-auto mb-4">
+                                <span class="text-lg">⚠️</span>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">Insalubridade</h4>
+                            <p class="text-gray-600 text-sm mb-3">10%, 20% ou 40% do salário mínimo conforme grau de exposição</p>
+                            <div class="text-xs text-blue-600 font-medium">Art. 189-197, CLT</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Direitos de Proteção Social -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Proteção Social e Benefícios</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="card-professional bg-white p-8 rounded-xl">
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="professional-badge text-white p-3 rounded-lg">
+                                    <span class="text-xl">💼</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-800">FGTS</h4>
+                                    <div class="text-sm text-blue-600 font-medium">Lei 8.036/90</div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">Depósito mensal de 8% do salário em conta vinculada, sacável em situações específicas como demissão sem justa causa, aposentadoria ou compra da casa própria.</p>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="text-sm text-gray-700">
+                                    <strong>Principais hipóteses de saque:</strong>
+                                    <ul class="mt-2 space-y-1 text-xs">
+                                        <li>• Demissão sem justa causa</li>
+                                        <li>• Aposentadoria</li>
+                                        <li>• Compra da casa própria</li>
+                                        <li>• Doenças graves</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-professional bg-white p-8 rounded-xl">
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="professional-badge text-white p-3 rounded-lg">
+                                    <span class="text-xl">🔒</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-800">Seguro-Desemprego</h4>
+                                    <div class="text-sm text-blue-600 font-medium">Lei 7.998/90</div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">Benefício temporário concedido ao trabalhador desempregado, variando de 3 a 5 parcelas conforme o tempo de trabalho anterior.</p>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="text-sm text-gray-700">
+                                    <strong>Requisitos básicos:</strong>
+                                    <ul class="mt-2 space-y-1 text-xs">
+                                        <li>• Demissão sem justa causa</li>
+                                        <li>• Mínimo de 12 meses trabalhados</li>
+                                        <li>• Não possuir renda própria</li>
+                                        <li>• Não receber benefício previdenciário</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-professional bg-white p-8 rounded-xl">
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="professional-badge text-white p-3 rounded-lg">
+                                    <span class="text-xl">👶</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-800">Licença-Maternidade</h4>
+                                    <div class="text-sm text-blue-600 font-medium">Art. 7º, XVIII, CF/88</div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">120 dias de afastamento remunerado para gestantes, podendo ser estendido para 180 dias em empresas participantes do Programa Empresa Cidadã.</p>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="text-sm text-gray-700">
+                                    <strong>Estabilidade:</strong> Desde a confirmação da gravidez até 5 meses após o parto
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-professional bg-white p-8 rounded-xl">
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="professional-badge text-white p-3 rounded-lg">
+                                    <span class="text-xl">🏥</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-bold text-gray-800">Auxílio-Doença</h4>
+                                    <div class="text-sm text-blue-600 font-medium">Lei 8.213/91</div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">Benefício previdenciário para trabalhadores temporariamente incapacitados para o trabalho por motivo de doença ou acidente.</p>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="text-sm text-gray-700">
+                                    <strong>Carência:</strong> 12 contribuições mensais (exceto acidentes)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 secondary-gradient">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Perguntas Frequentes</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Esclarecimentos sobre as principais dúvidas relacionadas aos direitos trabalhistas brasileiros, baseados na legislação vigente.
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Coluna 1 -->
+                    <div class="space-y-6">
+                        <div class="faq-professional bg-white rounded-xl overflow-hidden">
+                            <button onclick="toggleFAQ(0)" class="w-full text-left p-8 font-semibold text-gray-800 hover:text-blue-600 transition duration-300">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="professional-badge text-white p-2 rounded-lg flex-shrink-0 mt-1">
+                                            <span class="text-sm">💰</span>
+                                        </div>
+                                        <span class="text-lg">Qual é o valor do salário mínimo atual e como é reajustado?</span>
+                                    </div>
+                                    <span class="faq-icon text-2xl text-blue-600 ml-4">+</span>
+                                </div>
+                            </button>
+                            <div class="faq-answer px-8 pb-8">
+                                <div class="pl-12">
+                                    <p class="text-gray-600 mb-4">O salário mínimo é reajustado anualmente pelo governo federal, considerando a inflação do período anterior e o crescimento do PIB. O valor serve como referência para diversos cálculos trabalhistas e previdenciários.</p>
+                                    <div class="bg-blue-50 p-4 rounded-lg">
+                                        <p class="text-sm text-blue-800"><strong>Base legal:</strong> Artigo 7º, IV da Constituição Federal e Lei 12.382/2011</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-professional bg-white rounded-xl overflow-hidden">
+                            <button onclick="toggleFAQ(1)" class="w-full text-left p-8 font-semibold text-gray-800 hover:text-blue-600 transition duration-300">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="professional-badge text-white p-2 rounded-lg flex-shrink-0 mt-1">
+                                            <span class="text-sm">📋</span>
+                                        </div>
+                                        <span class="text-lg">Como funciona o aviso prévio e quais são suas modalidades?</span>
+                                    </div>
+                                    <span class="faq-icon text-2xl text-blue-600 ml-4">+</span>
+                                </div>
+                            </button>
+                            <div class="faq-answer px-8 pb-8">
+                                <div class="pl-12">
+                                    <p class="text-gray-600 mb-4">O aviso prévio é o período mínimo de 30 dias que deve ser comunicado antes da rescisão do contrato de trabalho. Pode ser trabalhado (empregado continua trabalhando) ou indenizado (empregador paga sem exigir trabalho).</p>
+                                    <div class="bg-blue-50 p-4 rounded-lg">
+                                        <p class="text-sm text-blue-800 mb-2"><strong>Modalidades:</strong></p>
+                                        <ul class="text-sm text-blue-800 space-y-1">
+                                            <li>• <strong>Trabalhado:</strong> Redução de 2h diárias ou 7 dias corridos</li>
+                                            <li>• <strong>Indenizado:</strong> Pagamento sem prestação de serviços</li>
+                                            <li>• <strong>Proporcional:</strong> 3 dias por ano trabalhado (Lei 12.506/2011)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-professional bg-white rounded-xl overflow-hidden">
+                            <button onclick="toggleFAQ(2)" class="w-full text-left p-8 font-semibold text-gray-800 hover:text-blue-600 transition duration-300">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="professional-badge text-white p-2 rounded-lg flex-shrink-0 mt-1">
+                                            <span class="text-sm">💼</span>
+                                        </div>
+                                        <span class="text-lg">Quando e como posso sacar o FGTS?</span>
+                                    </div>
+                                    <span class="faq-icon text-2xl text-blue-600 ml-4">+</span>
+                                </div>
+                            </button>
+                            <div class="faq-answer px-8 pb-8">
+                                <div class="pl-12">
+                                    <p class="text-gray-600 mb-4">O FGTS pode ser sacado em situações específicas previstas na Lei 8.036/90. As principais hipóteses incluem demissão sem justa causa, aposentadoria, compra da casa própria e doenças graves.</p>
+                                    <div class="bg-blue-50 p-4 rounded-lg">
+                                        <p class="text-sm text-blue-800 mb-2"><strong>Principais hipóteses de saque:</strong></p>
+                                        <ul class="text-sm text-blue-800 space-y-1">
+                                            <li>• Demissão sem justa causa ou culpa recíproca</li>
+                                            <li>• Término do contrato por prazo determinado</li>
+                                            <li>• Aposentadoria</li>
+                                            <li>• Compra da casa própria (SFH)</li>
+                                            <li>• Doenças graves (câncer, HIV, etc.)</li>
+                                            <li>• Idade igual ou superior a 70 anos</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coluna 2 -->
+                    <div class="space-y-6">
+                        <div class="faq-professional bg-white rounded-xl overflow-hidden">
+                            <button onclick="toggleFAQ(3)" class="w-full text-left p-8 font-semibold text-gray-800 hover:text-blue-600 transition duration-300">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="professional-badge text-white p-2 rounded-lg flex-shrink-0 mt-1">
+                                            <span class="text-sm">⚠️</span>
+                                        </div>
+                                        <span class="text-lg">O que caracteriza justa causa e quais são suas consequências?</span>
+                                    </div>
+                                    <span class="faq-icon text-2xl text-blue-600 ml-4">+</span>
+                                </div>
+                            </button>
+                            <div class="faq-answer px-8 pb-8">
+                                <div class="pl-12">
+                                    <p class="text-gray-600 mb-4">Justa causa é a rescisão do contrato por falta grave do empregado, prevista no artigo 482 da CLT. Resulta na perda de direitos como aviso prévio, 13º salário proporcional e multa de 40% do FGTS.</p>
+                                    <div class="bg-red-50 p-4 rounded-lg">
+                                        <p class="text-sm text-red-800 mb-2"><strong>Principais motivos de justa causa:</strong></p>
+                                        <ul class="text-sm text-red-800 space-y-1">
+                                            <li>• Ato de improbidade ou desonestidade</li>
+                                            <li>• Incontinência de conduta ou mau procedimento</li>
+                                            <li>• Negociação habitual sem permissão</li>
+                                            <li>• Condenação criminal transitada em julgado</li>
+                                            <li>• Desídia (negligência) no desempenho das funções</li>
+                                            <li>• Embriaguez habitual ou em serviço</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-professional bg-white rounded-xl overflow-hidden">
+                            <button onclick="toggleFAQ(4)" class="w-full text-left p-8 font-semibold text-gray-800 hover:text-blue-600 transition duration-300">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="professional-badge text-white p-2 rounded-lg flex-shrink-0 mt-1">
+                                            <span class="text-sm">⏰</span>
+                                        </div>
+                                        <span class="text-lg">Como são calculadas as horas extras e adicionais?</span>
+                                    </div>
+                                    <span class="faq-icon text-2xl text-blue-600 ml-4">+</span>
+                                </div>
+                            </button>
+                            <div class="faq-answer px-8 pb-8">
+                                <div class="pl-12">
+                                    <p class="text-gray-600 mb-4">As horas extras são calculadas com adicional mínimo de 50% sobre o valor da hora normal. Em domingos e feriados, o adicional é de 100%. O cálculo base é: (salário ÷ 220 horas) × percentual do adicional.</p>
+                                    <div class="bg-green-50 p-4 rounded-lg">
+                                        <p class="text-sm text-green-800 mb-2"><strong>Fórmula de cálculo:</strong></p>
+                                        <ul class="text-sm text-green-800 space-y-1">
+                                            <li>• <strong>Valor da hora:</strong> Salário ÷ 220 horas mensais</li>
+                                            <li>• <strong>Hora extra 50%:</strong> Valor da hora × 1,5</li>
+                                            <li>• <strong>Hora extra 100%:</strong> Valor da hora × 2,0</li>
+                                            <li>• <strong>Adicional noturno:</strong> Hora normal × 1,2 (20%)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-professional bg-white rounded-xl overflow-hidden">
+                            <button onclick="toggleFAQ(5)" class="w-full text-left p-8 font-semibold text-gray-800 hover:text-blue-600 transition duration-300">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="professional-badge text-white p-2 rounded-lg flex-shrink-0 mt-1">
+                                            <span class="text-sm">🏖️</span>
+                                        </div>
+                                        <span class="text-lg">Como funcionam as férias e o adicional de 1/3?</span>
+                                    </div>
+                                    <span class="faq-icon text-2xl text-blue-600 ml-4">+</span>
+                                </div>
+                            </button>
+                            <div class="faq-answer px-8 pb-8">
+                                <div class="pl-12">
+                                    <p class="text-gray-600 mb-4">O trabalhador tem direito a 30 dias de férias após cada período aquisitivo de 12 meses, com adicional constitucional de 1/3 sobre o salário. As férias podem ser fracionadas em até 3 períodos.</p>
+                                    <div class="bg-blue-50 p-4 rounded-lg">
+                                        <p class="text-sm text-blue-800 mb-2"><strong>Regras do fracionamento:</strong></p>
+                                        <ul class="text-sm text-blue-800 space-y-1">
+                                            <li>• Um período não pode ser inferior a 14 dias corridos</li>
+                                            <li>• Os demais não podem ser inferiores a 5 dias corridos</li>
+                                            <li>• Início deve ser em dia útil (não sábado, domingo ou feriado)</li>
+                                            <li>• Pagamento até 2 dias antes do início das férias</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Podcast Section -->
+    <section id="podcast" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Podcast Educacional</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Conteúdo em áudio desenvolvido pela nossa equipe para aprofundar o conhecimento sobre direitos trabalhistas de forma acessível e didática.
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Player Section -->
+                    <div class="order-2 lg:order-1">
+                        <div class="professional-podcast rounded-2xl p-8 text-white">
+                            <div class="flex items-center mb-8">
+                                <div class="w-16 h-16 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mr-6 flex-shrink-0">
+                                    <span class="text-2xl">🎙️</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-1">Direitos Trabalhistas: Fundamentos e Aplicações</h3>
+                                    <p class="text-gray-300 text-sm">Episódio 1 • 15 minutos • Educacional</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-10 rounded-xl p-6 mb-8">
+                                <div class="flex items-center justify-between mb-4 text-sm text-gray-300">
+                                    <span>0:00</span>
+                                    <span>15:00</span>
+                                </div>
+                                <div class="w-full bg-white bg-opacity-20 rounded-full h-2 mb-6">
+                                    <div class="bg-white h-2 rounded-full transition-all duration-300" style="width: 0%" id="progress-bar"></div>
+                                </div>
+                                
+                                <div class="flex justify-center items-center space-x-6">
+                                    <button onclick="rewind()" class="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full transition duration-300 hover:scale-105">
+                                        <span class="text-lg">⏪</span>
+                                    </button>
+                                    <button onclick="togglePlay()" id="play-btn" class="bg-white text-gray-800 hover:bg-gray-100 px-8 py-4 rounded-full font-semibold transition duration-300 hover:scale-105 shadow-lg">
+                                        ▶️ Reproduzir
+                                    </button>
+                                    <button onclick="forward()" class="bg-white bg-opacity-20 hover:bg-opacity-30 p-3 rounded-full transition duration-300 hover:scale-105">
+                                        <span class="text-lg">⏩</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <p class="text-sm text-gray-300 mb-2">🎧 Player Demonstrativo</p>
+                                <p class="text-xs text-gray-400">Funcionalidade educacional - Substitua pelo áudio real do seu podcast</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Description -->
+                    <div class="order-1 lg:order-2">
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-800 mb-4">Sobre o Episódio</h3>
+                                <p class="text-gray-600 leading-relaxed mb-6">
+                                    Neste episódio inaugural, nossa equipe apresenta uma análise abrangente dos direitos trabalhistas brasileiros, explorando desde os fundamentos históricos da CLT até as aplicações práticas no ambiente de trabalho contemporâneo.
+                                </p>
+                                
+                                <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500">
+                                    <h4 class="font-semibold text-gray-800 mb-3">Tópicos Abordados:</h4>
+                                    <ul class="space-y-2 text-gray-600">
+                                        <li class="flex items-start space-x-3">
+                                            <span class="text-blue-500 mt-1">•</span>
+                                            <span>Evolução histórica da legislação trabalhista brasileira</span>
+                                        </li>
+                                        <li class="flex items-start space-x-3">
+                                            <span class="text-blue-500 mt-1">•</span>
+                                            <span>Principais direitos garantidos pela Constituição Federal</span>
+                                        </li>
+                                        <li class="flex items-start space-x-3">
+                                            <span class="text-blue-500 mt-1">•</span>
+                                            <span>Análise prática de casos do cotidiano trabalhista</span>
+                                        </li>
+                                        <li class="flex items-start space-x-3">
+                                            <span class="text-blue-500 mt-1">•</span>
+                                            <span>Orientações para trabalhadores e empregadores</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="stats-counter text-center p-6 rounded-xl">
+                                    <div class="text-2xl font-bold text-blue-600 mb-1">15 min</div>
+                                    <div class="text-gray-600 text-sm">Duração</div>
+                                </div>
+                                <div class="stats-counter text-center p-6 rounded-xl">
+                                    <div class="text-2xl font-bold text-blue-600 mb-1">2024</div>
+                                    <div class="text-gray-600 text-sm">Atualizado</div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-50 p-6 rounded-xl">
+                                <h4 class="font-semibold text-gray-800 mb-3">Equipe de Produção</h4>
+                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                    <div>
+                                        <p class="text-gray-600"><strong>Pesquisa:</strong> Pedro Teixeira</p>
+                                        <p class="text-gray-600"><strong>Roteiro:</strong> Luisa de Almeida</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-600"><strong>Apresentação:</strong> João Vitor Dantas</p>
+                                        <p class="text-gray-600"><strong>Edição:</strong> Enzo Peixoto</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Episodes Preview -->
+                <div class="mt-16">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Próximos Episódios</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="card-professional bg-white p-6 rounded-xl text-center">
+                            <div class="professional-badge text-white p-3 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                                <span class="text-lg">2</span>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">Rescisão e Verbas Trabalhistas</h4>
+                            <p class="text-gray-600 text-sm mb-3">Análise detalhada dos tipos de rescisão e cálculo das verbas rescisórias</p>
+                            <div class="text-xs text-blue-600 font-medium">Em produção</div>
+                        </div>
+
+                        <div class="card-professional bg-white p-6 rounded-xl text-center">
+                            <div class="professional-badge text-white p-3 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                                <span class="text-lg">3</span>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">Segurança e Medicina do Trabalho</h4>
+                            <p class="text-gray-600 text-sm mb-3">Direitos relacionados à saúde e segurança no ambiente laboral</p>
+                            <div class="text-xs text-blue-600 font-medium">Planejado</div>
+                        </div>
+
+                        <div class="card-professional bg-white p-6 rounded-xl text-center">
+                            <div class="professional-badge text-white p-3 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4">
+                                <span class="text-lg">4</span>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">Direitos Coletivos e Sindicais</h4>
+                            <p class="text-gray-600 text-sm mb-3">Organização sindical, negociação coletiva e direito de greve</p>
+                            <div class="text-xs text-blue-600 font-medium">Planejado</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="equipe" class="py-20 secondary-gradient">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Equipe de Desenvolvimento</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Conheça os estudantes responsáveis pela pesquisa, desenvolvimento e produção deste projeto educacional sobre direitos trabalhistas.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                    <div class="team-card p-8 rounded-2xl text-center">
+                        <div class="relative mb-6">
+                            <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mx-auto flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                                PT
+                            </div>
+                            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                <span class="text-blue-600 text-sm">💻</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Pedro Teixeira</h3>
+                        <p class="text-blue-600 font-medium mb-4">Desenvolvedor Web</p>
+                    </div>
+                    
+                    <div class="team-card p-8 rounded-2xl text-center">
+                        <div class="relative mb-6">
+                            <div class="w-24 h-24 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl mx-auto flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                                JD
+                            </div>
+                            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                <span class="text-green-600 text-sm">🔍</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">João Vitor Dantas</h3>
+                        <p class="text-green-600 font-medium mb-4">Pesquisador Principal</p>
+                    </div>
+                    
+                    <div class="team-card p-8 rounded-2xl text-center">
+                        <div class="relative mb-6">
+                            <div class="w-24 h-24 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl mx-auto flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                                EP
+                            </div>
+                            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                <span class="text-purple-600 text-sm">🎨</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Enzo Peixoto</h3>
+                        <p class="text-purple-600 font-medium mb-4">Designer</p>
+                    </div>
+                    
+                    <div class="team-card p-8 rounded-2xl text-center">
+                        <div class="relative mb-6">
+                            <div class="w-24 h-24 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl mx-auto flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                                LA
+                            </div>
+                            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
+                                <span class="text-pink-600 text-sm">💻</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Luisa de Almeida</h3>
+                        <p class="text-pink-600 font-medium mb-4">Co-Desenvolvedora</p>
+                    </div>
+                </div>
+
+                <!-- Project Info -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Sobre o Projeto</h3>
+                        <p class="text-gray-600 max-w-3xl mx-auto">
+                            Este projeto educacional foi desenvolvido como trabalho acadêmico com o objetivo de democratizar o conhecimento sobre direitos trabalhistas, tornando informações jurídicas complexas acessíveis através de uma abordagem didática e tecnológica.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="professional-badge text-white p-4 rounded-xl w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <span class="text-xl">🎓</span>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">Finalidade Educacional</h4>
+                            <p class="text-gray-600 text-sm">Projeto desenvolvido para fins acadêmicos e educacionais</p>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="professional-badge text-white p-4 rounded-xl w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <span class="text-xl">📚</span>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">Base Científica</h4>
+                            <p class="text-gray-600 text-sm">Fundamentado na legislação brasileira vigente</p>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="professional-badge text-white p-4 rounded-xl w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <span class="text-xl">🌐</span>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">Acesso Livre</h4>
+                            <p class="text-gray-600 text-sm">Conteúdo gratuito e acessível para toda a comunidade</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="professional-gradient text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid lg:grid-cols-4 gap-8 mb-12">
+                    <!-- Brand Section -->
+                    <div class="lg:col-span-2">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div class="bg-white bg-opacity-20 p-3 rounded-xl">
+                                <span class="text-2xl">⚖️</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold">Direitos Trabalhistas</h3>
+                                <p class="text-blue-200 text-sm">Projeto Educacional 2025</p>
+                            </div>
+                        </div>
+                        <p class="text-blue-100 leading-relaxed mb-6 max-w-md">
+                            Plataforma educacional desenvolvida para democratizar o conhecimento sobre direitos trabalhistas brasileiros, tornando informações jurídicas acessíveis através de tecnologia e design.
+                        </p>
+                        <div class="flex space-x-4">
+                            <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                                <span class="text-sm font-medium">🎓 Acadêmico</span>
+                            </div>
+                            <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                                <span class="text-sm font-medium">📚 Educacional</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Navegação</h4>
+                        <ul class="space-y-3 text-blue-100">
+                            <li><a href="#inicio" class="hover:text-white transition duration-300">Início</a></li>
+                            <li><a href="#direitos" class="hover:text-white transition duration-300">Direitos</a></li>
+                            <li><a href="#faq" class="hover:text-white transition duration-300">FAQ</a></li>
+                            <li><a href="#podcast" class="hover:text-white transition duration-300">Podcast</a></li>
+                            <li><a href="#equipe" class="hover:text-white transition duration-300">Equipe</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Legal References -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Base Legal</h4>
+                        <ul class="space-y-3 text-blue-100 text-sm">
+                            <li>Constituição Federal/88</li>
+                            <li>Consolidação das Leis do Trabalho</li>
+                            <li>Lei 8.036/90 (FGTS)</li>
+                            <li>Lei 7.998/90 (Seguro-Desemprego)</li>
+                            <li>Lei 8.213/91 (Previdência)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Team Credits -->
+                <div class="border-t border-white border-opacity-20 pt-8 mb-8">
+                    <h4 class="text-lg font-semibold mb-6 text-center">Equipe de Desenvolvimento</h4>
+                    <div class="grid md:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-xl mx-auto mb-3 flex items-center justify-center">
+                                <span class="font-bold">PT</span>
+                            </div>
+                            <p class="font-medium">Pedro Teixeira</p>
+                            <p class="text-blue-200 text-sm">Desenvolvedor Web</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-xl mx-auto mb-3 flex items-center justify-center">
+                                <span class="font-bold">JD</span>
+                            </div>
+                            <p class="font-medium">João Vitor Dantas</p>
+                            <p class="text-blue-200 text-sm">Pesquisador Principal</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-xl mx-auto mb-3 flex items-center justify-center">
+                                <span class="font-bold">EP</span>
+                            </div>
+                            <p class="font-medium">Enzo Peixoto</p>
+                            <p class="text-blue-200 text-sm">Designer</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-xl mx-auto mb-3 flex items-center justify-center">
+                                <span class="font-bold">LA</span>
+                            </div>
+                            <p class="font-medium">Luisa de Almeida</p>
+                            <p class="text-blue-200 text-sm">Co-Desenvolvedora</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copyright -->
+                <div class="border-t border-white border-opacity-20 pt-8 text-center">
+                    <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                        <div class="text-blue-100">
+                            <p>© 2025 Projeto Educacional sobre Direitos Trabalhistas</p>
+                            <p class="text-sm mt-1">Desenvolvido para fins acadêmicos e educacionais</p>
+                        </div>
+                        <div class="flex items-center space-x-4 text-blue-200 text-sm">
+                            <span>🇧🇷 Brasil</span>
+                            <span>•</span>
+                            <span>Legislação Atualizada</span>
+                            <span>•</span>
+                            <span>Acesso Gratuito</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let isPlaying = false;
+        let currentTime = 0;
+        let duration = 900; // 15 minutes in seconds
+        let playInterval;
+
+        // Easter egg
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'b') {
+                e.preventDefault();
+                showEasterEgg();
+            }
+        });
+
+        function showEasterEgg() {
+            const existingEgg = document.getElementById('easter-egg');
+            if (existingEgg) {
+                existingEgg.remove();
+            }
+            
+            // Play "Calma Calabreso" melody using Web Audio API
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            
+            // Melody notes for "Calma Calabreso" (simplified version)
+            const melody = [
+                { freq: 523.25, duration: 0.3 }, // C5 - Cal-
+                { freq: 493.88, duration: 0.3 }, // B4 - ma
+                { freq: 440.00, duration: 0.4 }, // A4 - Ca-
+                { freq: 493.88, duration: 0.4 }, // B4 - la-
+                { freq: 523.25, duration: 0.3 }, // C5 - bre-
+                { freq: 587.33, duration: 0.5 }, // D5 - so
+                { freq: 523.25, duration: 0.3 }, // C5
+                { freq: 493.88, duration: 0.3 }, // B4
+                { freq: 440.00, duration: 0.6 }  // A4
+            ];
+            
+            let currentTime = audioContext.currentTime;
+            
+            melody.forEach((note, index) => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(note.freq, currentTime);
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0, currentTime);
+                gainNode.gain.linearRampToValueAtTime(0.3, currentTime + 0.05);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, currentTime + note.duration);
+                
+                oscillator.start(currentTime);
+                oscillator.stop(currentTime + note.duration);
+                
+                currentTime += note.duration;
+            });
+            
+            const easterEgg = document.createElement('div');
+            easterEgg.id = 'easter-egg';
+            easterEgg.innerHTML = '🎵 Enzo Inutil! 🎵';
+            easterEgg.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #10b981;
+                color: white;
+                padding: 8px 16px;
+                border-radius: 8px;
+                font-weight: bold;
+                font-size: 14px;
+                z-index: 9999;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                animation: slideIn 0.3s ease-out, bounce 0.5s ease-in-out infinite;
+            `;
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes bounce {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.1); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            document.body.appendChild(easterEgg);
+            
+            setTimeout(() => {
+                easterEgg.remove();
+                style.remove();
+            }, 4000);
+        }
+
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        function toggleFAQ(index) {
+            const faqItems = document.querySelectorAll('.faq-professional');
+            const currentItem = faqItems[index];
+            const answer = currentItem.querySelector('.faq-answer');
+            const icon = currentItem.querySelector('.faq-icon');
+            
+            // Close all other FAQ items
+            faqItems.forEach((item, i) => {
+                if (i !== index) {
+                    item.querySelector('.faq-answer').classList.remove('active');
+                    item.querySelector('.faq-icon').textContent = '+';
+                }
+            });
+            
+            // Toggle current item
+            if (answer.classList.contains('active')) {
+                answer.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                answer.classList.add('active');
+                icon.textContent = '−';
+            }
+        }
+
+        function togglePlay() {
+            const playBtn = document.getElementById('play-btn');
+            
+            if (isPlaying) {
+                pauseAudio();
+                playBtn.innerHTML = '▶️ Reproduzir';
+            } else {
+                playAudio();
+                playBtn.innerHTML = '⏸️ Pausar';
+            }
+        }
+
+        function playAudio() {
+            isPlaying = true;
+            playInterval = setInterval(() => {
+                currentTime += 1;
+                updateProgressBar();
+                
+                if (currentTime >= duration) {
+                    pauseAudio();
+                    document.getElementById('play-btn').innerHTML = '▶️ Reproduzir';
+                    currentTime = 0;
+                    updateProgressBar();
+                }
+            }, 1000);
+        }
+
+        function pauseAudio() {
+            isPlaying = false;
+            clearInterval(playInterval);
+        }
+
+        function rewind() {
+            currentTime = Math.max(0, currentTime - 10);
+            updateProgressBar();
+        }
+
+        function forward() {
+            currentTime = Math.min(duration, currentTime + 10);
+            updateProgressBar();
+        }
+
+        function updateProgressBar() {
+            const progress = (currentTime / duration) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+        }
+
+        // Smooth scrolling for navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling to all anchor links
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97368c1213f0f61e',t:'MTc1NTkwOTUwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
