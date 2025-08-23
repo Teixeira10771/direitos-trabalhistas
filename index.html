@@ -27,6 +27,58 @@
         .section-hidden { display: none; }
         .section-active { display: block; }
         
+        /* Custom slider styles */
+        .slider {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+        }
+        
+        .slider::-webkit-slider-track {
+            background: rgba(75, 85, 99, 0.5);
+            height: 8px;
+            border-radius: 4px;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            background: linear-gradient(45deg, #8b5cf6, #ec4899);
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .slider::-moz-range-track {
+            background: rgba(75, 85, 99, 0.5);
+            height: 8px;
+            border-radius: 4px;
+        }
+        
+        .slider::-moz-range-thumb {
+            background: linear-gradient(45deg, #8b5cf6, #ec4899);
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        /* Speed control styling */
+        .speed-select {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .speed-select option {
+            background-color: #1f2937;
+            color: white;
+        }
+        
         /* Mobile optimizations */
         @media (max-width: 768px) {
             .container { padding-left: 1rem; padding-right: 1rem; }
@@ -310,52 +362,120 @@
                         </div>
                     </div>
                     
-                    <!-- Player de Áudio -->
-                    <div class="bg-white rounded-lg shadow-lg p-8">
+                    <!-- Modern Audio Player -->
+                    <div class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 rounded-2xl p-8 shadow-2xl border border-purple-500/20">
+                        <!-- Player Header -->
                         <div class="flex items-center mb-6">
-                            <div class="w-20 h-20 bg-gradient-to-br from-navy to-navy-dark rounded-lg flex items-center justify-center mr-6">
-                                <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M8 5v10l7-5-7-5z"/>
-                                </svg>
+                            <div class="relative">
+                                <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg">
+                                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
+                                    </svg>
+                                </div>
+                                <div class="absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                    <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="text-xl font-bold text-navy mb-1">Episódio 1</h4>
-                                <p class="text-gray-600 mb-2">Leis Trabalhistas: Guia Completo para Todos</p>
-                                <p class="text-sm text-gray-500">Duração: 25:30 minutos</p>
+                            <div class="ml-4 flex-1">
+                                <h4 class="text-xl font-bold text-white mb-1">Direitos em Pauta</h4>
+                                <p class="text-purple-300 text-sm mb-1">Episódio 1: Leis Trabalhistas Essenciais</p>
+                                <div class="flex items-center text-xs text-gray-400">
+                                    <span class="bg-purple-500/20 px-2 py-1 rounded-full mr-2">🎧 Podcast</span>
+                                    <span>25:30 min</span>
+                                </div>
                             </div>
                         </div>
-                        
-                        <!-- Custom Audio Player -->
-                        <div class="bg-gray-50 rounded-lg p-6">
-                            <div class="flex items-center justify-between mb-4">
-                                <button id="playPauseBtn" class="w-12 h-12 bg-navy rounded-full flex items-center justify-center hover:bg-navy-dark transition-colors">
-                                    <svg id="playIcon" class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
+
+                        <!-- Progress Section -->
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between text-sm text-gray-300 mb-3">
+                                <span id="currentTime" class="font-mono bg-black/30 px-2 py-1 rounded">0:00</span>
+                                <span class="font-mono bg-black/30 px-2 py-1 rounded">25:30</span>
+                            </div>
+                            <div class="relative">
+                                <div class="w-full bg-gray-700/50 rounded-full h-3 cursor-pointer backdrop-blur-sm" id="progressBar">
+                                    <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full transition-all duration-300 shadow-lg relative" style="width: 0%" id="progress">
+                                        <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-5 h-5 bg-white rounded-full shadow-lg border-2 border-purple-500"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Controls Section -->
+                        <div class="flex items-center justify-between">
+                            <!-- Left Controls -->
+                            <div class="flex items-center space-x-3">
+                                <button id="rewindBtn" class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm">
+                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M8.445 14.832A1 1 0 0010 14v-2.798l5.445 3.63A1 1 0 0017 14V6a1 1 0 00-1.555-.832L10 8.798V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z"/>
+                                    </svg>
+                                </button>
+                                
+                                <!-- Main Play Button -->
+                                <button id="playPauseBtn" class="w-14 h-14 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-full flex items-center justify-center transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
+                                    <svg id="playIcon" class="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M8 5v10l7-5-7-5z"/>
                                     </svg>
-                                    <svg id="pauseIcon" class="w-6 h-6 text-white hidden" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg id="pauseIcon" class="w-7 h-7 text-white hidden" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M6 4h2v12H6V4zm6 0h2v12h-2V4z"/>
                                     </svg>
                                 </button>
-                                <div class="flex-1 mx-4">
-                                    <div class="flex items-center justify-between text-sm text-gray-500 mb-1">
-                                        <span id="currentTime">0:00</span>
-                                        <span>25:30</span>
-                                    </div>
-                                    <div class="w-full bg-gray-300 rounded-full h-2 cursor-pointer" id="progressBar">
-                                        <div class="bg-navy h-2 rounded-full transition-all duration-300" style="width: 0%" id="progress"></div>
-                                    </div>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                                
+                                <button id="forwardBtn" class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm">
+                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M4.555 5.168A1 1 0 003 6v8a1 1 0 001.555.832L10 11.202V14a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4A1 1 0 0010 6v2.798l-5.445-3.63z"/>
                                     </svg>
-                                    <input type="range" min="0" max="100" value="70" class="w-20 h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer" id="volumeSlider">
+                                </button>
+                            </div>
+
+                            <!-- Right Controls -->
+                            <div class="flex items-center space-x-4">
+                                <!-- Speed Control -->
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs text-gray-400">Velocidade</span>
+                                    <select id="speedControl" class="speed-select text-sm rounded-lg px-2 py-1 border border-white/20 backdrop-blur-sm">
+                                        <option value="0.5">0.5x</option>
+                                        <option value="1" selected>1x</option>
+                                        <option value="1.25">1.25x</option>
+                                        <option value="1.5">1.5x</option>
+                                        <option value="2">2x</option>
+                                    </select>
+                                </div>
+
+                                <!-- Volume Control -->
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.793L4.828 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.828l3.555-3.793A1 1 0 019.383 3.076zM12 8a1 1 0 011.414 0L15 9.586l1.586-1.586a1 1 0 111.414 1.414L16.414 11 18 12.586a1 1 0 01-1.414 1.414L15 12.414l-1.586 1.586a1 1 0 01-1.414-1.414L13.586 11 12 9.414A1 1 0 0112 8z"/>
+                                    </svg>
+                                    <input type="range" min="0" max="100" value="70" class="w-20 h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer slider" id="volumeSlider">
                                 </div>
                             </div>
-                            <p class="text-sm text-gray-600 text-center">
-                                <span class="inline-block w-2 h-2 bg-red-500 rounded-full mr-2"></span>
-                                Player de demonstração - Áudio não disponível para reprodução
-                            </p>
+                        </div>
+
+                        <!-- Status Bar -->
+                        <div class="mt-6 pt-4 border-t border-white/10">
+                            <div class="flex items-center justify-between text-xs">
+                                <div class="flex items-center space-x-4 text-gray-400">
+                                    <span class="flex items-center">
+                                        <span class="inline-block w-2 h-2 bg-red-500 rounded-full mr-2 animate-pulse"></span>
+                                        Demo Player
+                                    </span>
+                                    <span>•</span>
+                                    <span>Áudio não disponível</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="text-gray-400 hover:text-white transition-colors">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"/>
+                                        </svg>
+                                    </button>
+                                    <button class="text-gray-400 hover:text-white transition-colors">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -715,7 +835,7 @@
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-12">
         <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-8">
+            <div class="grid md:grid-cols-3 gap-8">
                 <div>
                     <h3 class="text-lg font-bold mb-4">Projeto Leis Trabalhistas</h3>
                     <p class="text-gray-300">
@@ -737,14 +857,6 @@
                         <li><button onclick="showSection('merchants')" class="hover:text-white transition-colors">Para Comerciantes</button></li>
                         <li><button onclick="showSection('community')" class="hover:text-white transition-colors">Para Comunidade</button></li>
                     </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">Contato</h4>
-                    <div class="space-y-2 text-gray-300">
-                        <p>projeto.leis.trabalhistas@email.com</p>
-                        <p>(11) 9999-9999</p>
-                        <p>Universidade - Campus Principal</p>
-                    </div>
                 </div>
             </div>
             <div class="border-t border-gray-600 mt-8 pt-6 text-center text-gray-300">
@@ -887,6 +999,7 @@
         let isPlayerPlaying = false;
         let currentProgress = 0;
         let progressInterval;
+        let playbackSpeed = 1;
 
         document.addEventListener('DOMContentLoaded', function() {
             // Show home section by default
@@ -900,6 +1013,9 @@
             const progress = document.getElementById('progress');
             const currentTimeSpan = document.getElementById('currentTime');
             const volumeSlider = document.getElementById('volumeSlider');
+            const rewindBtn = document.getElementById('rewindBtn');
+            const forwardBtn = document.getElementById('forwardBtn');
+            const speedControl = document.getElementById('speedControl');
 
             if (playPauseBtn) {
                 playPauseBtn.addEventListener('click', function() {
@@ -918,7 +1034,7 @@
                         // Simulate progress
                         progressInterval = setInterval(() => {
                             if (currentProgress < 100) {
-                                currentProgress += 0.1;
+                                currentProgress += (0.0653 * playbackSpeed); // Adjusted for real-time: 100% in 1530 seconds
                                 progress.style.width = currentProgress + '%';
                                 
                                 // Update time display
@@ -936,8 +1052,46 @@
                                 progress.style.width = '0%';
                                 currentTimeSpan.textContent = '0:00';
                             }
-                        }, 100);
+                        }, 1000);
                     }
+                });
+            }
+
+            // Rewind button (go back 10 seconds)
+            if (rewindBtn) {
+                rewindBtn.addEventListener('click', function() {
+                    const rewindAmount = (10 / 1530) * 100; // 10 seconds as percentage
+                    currentProgress = Math.max(0, currentProgress - rewindAmount);
+                    progress.style.width = currentProgress + '%';
+                    
+                    // Update time display
+                    const totalSeconds = Math.floor((currentProgress / 100) * 1530);
+                    const minutes = Math.floor(totalSeconds / 60);
+                    const seconds = totalSeconds % 60;
+                    currentTimeSpan.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                });
+            }
+
+            // Forward button (go forward 10 seconds)
+            if (forwardBtn) {
+                forwardBtn.addEventListener('click', function() {
+                    const forwardAmount = (10 / 1530) * 100; // 10 seconds as percentage
+                    currentProgress = Math.min(100, currentProgress + forwardAmount);
+                    progress.style.width = currentProgress + '%';
+                    
+                    // Update time display
+                    const totalSeconds = Math.floor((currentProgress / 100) * 1530);
+                    const minutes = Math.floor(totalSeconds / 60);
+                    const seconds = totalSeconds % 60;
+                    currentTimeSpan.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                });
+            }
+
+            // Speed control
+            if (speedControl) {
+                speedControl.addEventListener('change', function() {
+                    playbackSpeed = parseFloat(this.value);
+                    console.log('Playback speed set to:', playbackSpeed + 'x');
                 });
             }
 
@@ -967,5 +1121,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'973b3c1b46b2f618',t:'MTc1NTk1ODY2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'973bc6ebc268f63a',t:'MTc1NTk2NDM0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
