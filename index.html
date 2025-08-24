@@ -583,9 +583,9 @@
         <section id="faq" class="section-hidden fade-in py-16 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Central de Dúvidas</h2>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Central de Dúvidas Jurídicas</h2>
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Tire suas dúvidas sobre leis trabalhistas e veja as perguntas da comunidade
+                        Esclareça suas questões sobre direito trabalhista e consulte as discussões da comunidade acadêmica
                     </p>
                 </div>
                 
@@ -593,23 +593,33 @@
                 <div class="max-w-4xl mx-auto mb-12">
                     <div id="loginSection" class="bg-gradient-to-r from-primary to-primary-dark text-white p-8 rounded-xl shadow-lg">
                         <div class="text-center mb-6">
-                            <h3 class="text-2xl font-bold mb-2">💬 Faça sua Pergunta</h3>
-                            <p class="text-blue-100">Entre com sua conta para participar da discussão</p>
+                            <h3 class="text-2xl font-bold mb-2">📋 Submissão de Consulta Jurídica</h3>
+                            <p class="text-blue-100">Acesse sua conta para participar das discussões acadêmicas</p>
                         </div>
                         
                         <!-- Login Form -->
                         <div id="loginForm" class="max-w-md mx-auto">
+                            <div class="text-center mb-4">
+                                <div class="flex justify-center space-x-4 mb-4">
+                                    <button id="loginTab" onclick="switchTab('login')" class="px-4 py-2 rounded-lg bg-white text-primary font-semibold">
+                                        Entrar
+                                    </button>
+                                    <button id="registerTab" onclick="switchTab('register')" class="px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold">
+                                        Criar Conta
+                                    </button>
+                                </div>
+                            </div>
                             <div class="space-y-4">
                                 <div>
-                                    <label class="block text-sm font-medium mb-2">Nome de usuário</label>
-                                    <input type="text" id="username" class="w-full px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 focus:ring-2 focus:ring-blue-300 focus:border-transparent" placeholder="Digite seu nome de usuário">
+                                    <label class="block text-sm font-medium mb-2">Nome</label>
+                                    <input type="text" id="username" class="w-full px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 focus:ring-2 focus:ring-blue-300 focus:border-transparent" placeholder="Digite seu nome">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-2">Email</label>
                                     <input type="email" id="userEmail" class="w-full px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-300 focus:ring-2 focus:ring-blue-300 focus:border-transparent" placeholder="seu@email.com">
                                 </div>
                                 <button onclick="loginUser()" class="w-full bg-white text-primary py-2 px-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                                    🔑 Entrar
+                                    <span id="loginButtonText">🔑 Acessar Plataforma</span>
                                 </button>
                             </div>
                         </div>
@@ -626,22 +636,25 @@
                                         <p class="text-xs text-blue-100" id="loggedUserEmail">email@exemplo.com</p>
                                     </div>
                                 </div>
-                                <button onclick="logoutUser()" class="text-blue-200 hover:text-white text-sm">
-                                    🚪 Sair
+                                <button onclick="logoutUser()" class="flex items-center text-blue-200 hover:text-white text-sm transition-colors">
+                                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                                    </svg>
+                                    Sair
                                 </button>
                             </div>
                             
                             <div class="space-y-4">
                                 <div>
-                                    <label class="block text-sm font-medium mb-2">Sua dúvida sobre leis trabalhistas</label>
-                                    <textarea id="questionText" rows="4" class="w-full px-4 py-3 rounded-lg bg-white text-gray-800 border border-gray-300 focus:ring-2 focus:ring-blue-300 focus:border-transparent resize-none" placeholder="Digite sua pergunta aqui... Ex: Tenho direito a horas extras se trabalhar mais de 8 horas por dia?"></textarea>
+                                    <label class="block text-sm font-medium mb-2">Consulta sobre direito trabalhista</label>
+                                    <textarea id="questionText" rows="5" class="w-full px-4 py-3 rounded-lg bg-white text-gray-800 border border-gray-300 focus:ring-2 focus:ring-blue-300 focus:border-transparent resize-none" placeholder="Descreva sua questão jurídica de forma detalhada. Ex: Gostaria de esclarecer se tenho direito ao recebimento de horas extraordinárias quando minha jornada de trabalho excede 8 horas diárias..."></textarea>
                                 </div>
                                 <div class="flex items-center justify-between">
                                     <span class="text-xs text-blue-100">
-                                        <span id="charCount">0</span>/500 caracteres
+                                        <span id="charCount">0</span>/1000 caracteres
                                     </span>
                                     <button onclick="submitQuestion()" class="bg-white text-primary py-2 px-6 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                                        📤 Enviar Pergunta
+                                        📋 Submeter Consulta
                                     </button>
                                 </div>
                             </div>
@@ -649,12 +662,95 @@
                     </div>
                 </div>
                 
+                <!-- Developer Panel (Hidden by default) -->
+                <div id="developerPanel" class="max-w-4xl mx-auto mb-12 hidden">
+                    <div class="bg-gradient-to-r from-red-600 to-red-800 text-white p-6 rounded-xl shadow-lg border-2 border-red-400">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-red-600 font-bold">🔧</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold">Painel do Desenvolvedor</h3>
+                                    <p class="text-red-100 text-sm">Acesso administrativo ao sistema</p>
+                                </div>
+                            </div>
+                            <button onclick="closeDeveloperPanel()" class="text-red-200 hover:text-white transition-colors">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-3 gap-4 mb-4">
+                            <button onclick="showDeveloperTab('manage')" id="devTabManage" class="bg-white text-red-600 px-4 py-2 rounded-lg font-semibold hover:bg-red-50 transition-colors">
+                                🗑️ Gerenciar Perguntas
+                            </button>
+                            <button onclick="showDeveloperTab('answer')" id="devTabAnswer" class="bg-red-700 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-600 transition-colors">
+                                💬 Responder Perguntas
+                            </button>
+                            <button onclick="showDeveloperTab('stats')" id="devTabStats" class="bg-red-700 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-600 transition-colors">
+                                📊 Estatísticas
+                            </button>
+                        </div>
+                        
+                        <!-- Manage Questions Tab -->
+                        <div id="devManageTab" class="bg-white text-gray-800 p-4 rounded-lg">
+                            <h4 class="font-bold mb-3">🗑️ Gerenciar Consultas Jurídicas</h4>
+                            <div id="devQuestionsList" class="space-y-2 max-h-60 overflow-y-auto">
+                                <!-- Questions for management will be loaded here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Answer Questions Tab -->
+                        <div id="devAnswerTab" class="bg-white text-gray-800 p-4 rounded-lg hidden">
+                            <h4 class="font-bold mb-3">💬 Responder Consultas Pendentes</h4>
+                            <div id="devPendingQuestions" class="space-y-3 max-h-60 overflow-y-auto">
+                                <!-- Pending questions will be loaded here -->
+                            </div>
+                        </div>
+                        
+                        <!-- Stats Tab -->
+                        <div id="devStatsTab" class="bg-white text-gray-800 p-4 rounded-lg hidden">
+                            <h4 class="font-bold mb-3">📊 Estatísticas do Sistema</h4>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div class="text-center p-3 bg-blue-50 rounded-lg">
+                                    <div class="text-2xl font-bold text-blue-600" id="totalQuestions">0</div>
+                                    <div class="text-sm text-gray-600">Total de Consultas</div>
+                                </div>
+                                <div class="text-center p-3 bg-green-50 rounded-lg">
+                                    <div class="text-2xl font-bold text-green-600" id="answeredQuestions">0</div>
+                                    <div class="text-sm text-gray-600">Respondidas</div>
+                                </div>
+                                <div class="text-center p-3 bg-yellow-50 rounded-lg">
+                                    <div class="text-2xl font-bold text-yellow-600" id="pendingQuestions">0</div>
+                                    <div class="text-sm text-gray-600">Pendentes</div>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-3 bg-gray-50 rounded-lg">
+                                <h5 class="font-semibold mb-2">🔧 Ações do Desenvolvedor</h5>
+                                <div class="flex flex-wrap gap-2">
+                                    <button onclick="clearAllQuestions()" class="bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600 transition-colors">
+                                        🗑️ Limpar Todas
+                                    </button>
+                                    <button onclick="generateSampleQuestions()" class="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600 transition-colors">
+                                        📝 Gerar Exemplos
+                                    </button>
+                                    <button onclick="exportQuestions()" class="bg-green-500 text-white px-3 py-1 rounded text-sm hover:bg-green-600 transition-colors">
+                                        📤 Exportar Dados
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Community Questions -->
                 <div class="max-w-4xl mx-auto mb-12">
                     <div class="flex items-center justify-between mb-6">
-                        <h3 class="text-2xl font-bold text-gray-800">🗣️ Perguntas da Comunidade</h3>
+                        <h3 class="text-2xl font-bold text-gray-800">📚 Consultas da Comunidade Acadêmica</h3>
                         <div class="text-sm text-gray-600">
-                            <span id="questionCount">3</span> perguntas
+                            <span id="questionCount">3</span> consultas jurídicas
                         </div>
                     </div>
                     
@@ -1411,45 +1507,232 @@
         }
 
         // Easter Egg - Ctrl + B
+        let keySequence = [];
         document.addEventListener('keydown', function(event) {
             if (event.ctrlKey && event.key === 'b' && !isPlaying) {
                 event.preventDefault();
                 isPlaying = true;
                 showEnzoInutil();
             }
+            
+            // Developer access - Ctrl + Y + I
+            if (event.ctrlKey) {
+                keySequence.push(event.key.toLowerCase());
+                
+                // Keep only last 2 keys
+                if (keySequence.length > 2) {
+                    keySequence.shift();
+                }
+                
+                // Check for Ctrl + Y + I sequence
+                if (keySequence.length === 2 && keySequence[0] === 'y' && keySequence[1] === 'i') {
+                    event.preventDefault();
+                    openDeveloperPanel();
+                    keySequence = []; // Reset sequence
+                }
+            } else {
+                keySequence = []; // Reset if Ctrl is not pressed
+            }
         });
 
-        // FAQ Community System
+        // FAQ Community System with Persistent Storage
         let currentUser = null;
-        let communityQuestions = [
+        let communityQuestions = [];
+        
+        // Storage keys
+        const STORAGE_KEY = 'projeto_leis_trabalhistas_questions';
+        const USER_KEY = 'projeto_leis_trabalhistas_user';
+        const LIKES_KEY = 'projeto_leis_trabalhistas_user_likes';
+        
+        // Initialize default questions if none exist
+        const defaultQuestions = [
             {
                 id: 1,
-                username: "Maria Silva",
-                email: "maria@email.com",
-                question: "Se eu trabalho 9 horas por dia, tenho direito a receber hora extra pela hora adicional?",
+                username: "Maria Silva Santos",
+                email: "maria.santos@email.com",
+                question: "Gostaria de esclarecer se existe fundamentação legal para o recebimento de horas extraordinárias quando a jornada de trabalho excede as 8 horas diárias estabelecidas pela CLT. Qual seria o percentual de adicional aplicável e quais são as exceções previstas na legislação?",
                 timestamp: "2025-01-15 14:30",
-                likes: 5,
+                likes: 12,
                 status: "answered"
             },
             {
                 id: 2,
-                username: "João Santos",
-                email: "joao@email.com", 
-                question: "Meu patrão pode descontar do meu salário se eu quebrar algo no trabalho?",
+                username: "João Carlos Santos",
+                email: "joao.santos@email.com", 
+                question: "Solicito orientação jurídica sobre a legalidade de descontos salariais em casos de danos ao patrimônio da empresa. Quais são os requisitos legais para que o empregador possa efetuar tais descontos e existe alguma limitação percentual sobre o salário do trabalhador?",
                 timestamp: "2025-01-14 09:15",
-                likes: 3,
+                likes: 8,
                 status: "pending"
             },
             {
                 id: 3,
-                username: "Ana Costa",
-                email: "ana@email.com",
-                question: "Estou grávida e meu chefe está me tratando mal. O que posso fazer?",
+                username: "Ana Paula Costa",
+                email: "ana.costa@email.com",
+                question: "Encontro-me em estado gestacional e venho sofrendo tratamento discriminatório por parte da chefia imediata. Gostaria de conhecer os direitos específicos da gestante no ambiente de trabalho e os mecanismos legais disponíveis para coibir práticas de assédio moral durante a gravidez.",
                 timestamp: "2025-01-13 16:45",
-                likes: 8,
+                likes: 15,
                 status: "answered"
             }
         ];
+        
+        // Storage functions
+        function saveQuestionsToStorage() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(communityQuestions));
+                console.log('💾 Perguntas salvas no localStorage:', communityQuestions.length);
+            } catch (error) {
+                console.error('❌ Erro ao salvar perguntas:', error);
+                showNotification('Erro ao salvar dados. Verifique o espaço de armazenamento.', 'error');
+            }
+        }
+        
+        function loadQuestionsFromStorage() {
+            try {
+                const stored = localStorage.getItem(STORAGE_KEY);
+                if (stored) {
+                    communityQuestions = JSON.parse(stored);
+                    console.log('📂 Perguntas carregadas do localStorage:', communityQuestions.length);
+                } else {
+                    // First time - load default questions
+                    communityQuestions = [...defaultQuestions];
+                    saveQuestionsToStorage();
+                    console.log('🆕 Perguntas padrão carregadas (primeira vez)');
+                }
+            } catch (error) {
+                console.error('❌ Erro ao carregar perguntas:', error);
+                communityQuestions = [...defaultQuestions];
+                console.log('🔄 Usando perguntas padrão devido ao erro');
+            }
+        }
+        
+        function saveUserToStorage() {
+            try {
+                if (currentUser) {
+                    localStorage.setItem(USER_KEY, JSON.stringify(currentUser));
+                    console.log('👤 Usuário salvo no localStorage:', currentUser.username);
+                }
+            } catch (error) {
+                console.error('❌ Erro ao salvar usuário:', error);
+            }
+        }
+        
+        function loadUserFromStorage() {
+            try {
+                const stored = localStorage.getItem(USER_KEY);
+                if (stored) {
+                    currentUser = JSON.parse(stored);
+                    console.log('👤 Usuário carregado do localStorage:', currentUser.username);
+                    return true;
+                }
+            } catch (error) {
+                console.error('❌ Erro ao carregar usuário:', error);
+            }
+            return false;
+        }
+        
+        function clearUserFromStorage() {
+            try {
+                localStorage.removeItem(USER_KEY);
+                console.log('👤 Usuário removido do localStorage');
+            } catch (error) {
+                console.error('❌ Erro ao remover usuário:', error);
+            }
+        }
+        
+        // Like tracking functions
+        function getUserLikes() {
+            try {
+                const stored = localStorage.getItem(LIKES_KEY);
+                return stored ? JSON.parse(stored) : {};
+            } catch (error) {
+                console.error('❌ Erro ao carregar likes do usuário:', error);
+                return {};
+            }
+        }
+        
+        function saveUserLikes(userLikes) {
+            try {
+                localStorage.setItem(LIKES_KEY, JSON.stringify(userLikes));
+            } catch (error) {
+                console.error('❌ Erro ao salvar likes do usuário:', error);
+            }
+        }
+        
+        function hasUserLikedQuestion(questionId) {
+            if (!currentUser) return false;
+            const userLikes = getUserLikes();
+            const userKey = currentUser.email;
+            return userLikes[userKey] && userLikes[userKey].includes(questionId);
+        }
+        
+        function addUserLike(questionId) {
+            if (!currentUser) return false;
+            const userLikes = getUserLikes();
+            const userKey = currentUser.email;
+            
+            if (!userLikes[userKey]) {
+                userLikes[userKey] = [];
+            }
+            
+            if (!userLikes[userKey].includes(questionId)) {
+                userLikes[userKey].push(questionId);
+                saveUserLikes(userLikes);
+                return true;
+            }
+            return false;
+        }
+        
+        function removeUserLike(questionId) {
+            if (!currentUser) return false;
+            const userLikes = getUserLikes();
+            const userKey = currentUser.email;
+            
+            if (userLikes[userKey]) {
+                const index = userLikes[userKey].indexOf(questionId);
+                if (index > -1) {
+                    userLikes[userKey].splice(index, 1);
+                    saveUserLikes(userLikes);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Tab switching functionality
+        let currentTab = 'login';
+        
+        function switchTab(tabName) {
+            currentTab = tabName;
+            const loginTab = document.getElementById('loginTab');
+            const registerTab = document.getElementById('registerTab');
+            const loginButtonText = document.getElementById('loginButtonText');
+            
+            if (tabName === 'login') {
+                // Style login tab as active
+                loginTab.className = 'px-4 py-2 rounded-lg bg-white text-primary font-semibold';
+                registerTab.className = 'px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold';
+                
+                // Update form labels and button
+                document.querySelector('label[for="username"]').textContent = 'Nome';
+                document.querySelector('input#username').placeholder = 'Digite seu nome';
+                document.querySelector('label[for="userEmail"]').textContent = 'Email';
+                loginButtonText.textContent = '🔑 Acessar Plataforma';
+                
+                console.log('🔄 Aba "Entrar" ativada');
+            } else if (tabName === 'register') {
+                // Style register tab as active
+                registerTab.className = 'px-4 py-2 rounded-lg bg-white text-primary font-semibold';
+                loginTab.className = 'px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold';
+                
+                // Update form labels and button
+                document.querySelector('label[for="username"]').textContent = 'Nome';
+                document.querySelector('input#username').placeholder = 'Digite seu nome';
+                document.querySelector('label[for="userEmail"]').textContent = 'Email';
+                loginButtonText.textContent = '📝 Criar Conta';
+                
+                console.log('🔄 Aba "Criar Conta" ativada');
+            }
+        }
 
         // Login functionality
         function loginUser() {
@@ -1466,12 +1749,15 @@
                 return;
             }
             
-            // Simulate login
+            // Simulate login or registration based on current tab
             currentUser = {
                 username: username,
                 email: email,
                 initials: getInitials(username)
             };
+            
+            // Save user to localStorage
+            saveUserToStorage();
             
             // Update UI
             document.getElementById('loggedUsername').textContent = username;
@@ -1482,16 +1768,28 @@
             document.getElementById('loginForm').classList.add('hidden');
             document.getElementById('questionForm').classList.remove('hidden');
             
-            showNotification(`Bem-vindo(a), ${username}! 🎉`, 'success');
+            // Show appropriate success message based on tab
+            if (currentTab === 'login') {
+                showNotification(`Bem-vindo(a) de volta, ${username}! 🎉`, 'success');
+            } else {
+                showNotification(`Conta criada com sucesso! Bem-vindo(a), ${username}! 🎉`, 'success');
+            }
             
             // Clear login fields
             document.getElementById('username').value = '';
             document.getElementById('userEmail').value = '';
+            
+            // Reset to login tab for next time
+            currentTab = 'login';
+            switchTab('login');
         }
 
         // Logout functionality
         function logoutUser() {
             currentUser = null;
+            
+            // Clear user from localStorage
+            clearUserFromStorage();
             
             // Show login form, hide question form
             document.getElementById('loginForm').classList.remove('hidden');
@@ -1518,14 +1816,17 @@
                 return;
             }
             
-            if (questionText.length < 10) {
-                showNotification('Sua pergunta deve ter pelo menos 10 caracteres!', 'error');
+            if (questionText.length < 20) {
+                showNotification('Sua consulta deve ter pelo menos 20 caracteres para análise adequada!', 'error');
                 return;
             }
             
+            // Generate unique ID based on timestamp
+            const newId = Date.now();
+            
             // Create new question
             const newQuestion = {
-                id: communityQuestions.length + 1,
+                id: newId,
                 username: currentUser.username,
                 email: currentUser.email,
                 question: questionText,
@@ -1537,6 +1838,9 @@
             // Add to beginning of array (newest first)
             communityQuestions.unshift(newQuestion);
             
+            // Save to localStorage
+            saveQuestionsToStorage();
+            
             // Update UI
             loadCommunityQuestions();
             updateQuestionCount();
@@ -1545,7 +1849,7 @@
             document.getElementById('questionText').value = '';
             updateCharCount();
             
-            showNotification('Sua pergunta foi enviada com sucesso! 🎉', 'success');
+            showNotification('Sua consulta jurídica foi submetida com sucesso! Nossa equipe analisará em breve. 📋', 'success');
             
             // Scroll to community questions
             document.getElementById('communityQuestions').scrollIntoView({ 
@@ -1561,9 +1865,9 @@
             if (communityQuestions.length === 0) {
                 container.innerHTML = `
                     <div class="text-center py-12 text-gray-500">
-                        <div class="text-6xl mb-4">🤔</div>
-                        <p class="text-lg">Ainda não há perguntas da comunidade.</p>
-                        <p class="text-sm">Seja o primeiro a fazer uma pergunta!</p>
+                        <div class="text-6xl mb-4">📚</div>
+                        <p class="text-lg">Ainda não há consultas jurídicas da comunidade.</p>
+                        <p class="text-sm">Seja o primeiro a submeter uma consulta acadêmica!</p>
                     </div>
                 `;
                 return;
@@ -1583,7 +1887,7 @@
                         </div>
                         <div class="flex items-center space-x-2">
                             <span class="px-2 py-1 text-xs rounded-full ${q.status === 'answered' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}">
-                                ${q.status === 'answered' ? '✅ Respondida' : '⏳ Pendente'}
+                                ${q.status === 'answered' ? '✅ Respondida pela Equipe' : '⏳ Em Análise'}
                             </span>
                         </div>
                     </div>
@@ -1598,7 +1902,7 @@
                                 <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-2">
                                     <span class="text-white text-xs">📚</span>
                                 </div>
-                                <span class="font-semibold text-primary">Resposta da Equipe</span>
+                                <span class="font-semibold text-primary">Parecer Jurídico - Equipe Acadêmica</span>
                             </div>
                             <p class="text-gray-700 text-sm">
                                 ${getAnswerForQuestion(q.id)}
@@ -1607,43 +1911,143 @@
                     ` : ''}
                     
                     <div class="flex items-center justify-between">
-                        <button onclick="likeQuestion(${q.id})" class="flex items-center space-x-1 text-gray-500 hover:text-primary transition-colors">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"/>
-                            </svg>
-                            <span>${q.likes}</span>
-                        </button>
+                        ${getLikeButtonHTML(q.id, q.likes)}
                         
                         <div class="text-xs text-gray-400">
-                            Pergunta #${q.id}
+                            Consulta Jurídica #${q.id}
                         </div>
                     </div>
                 </div>
             `).join('');
         }
 
-        // Like question
-        function likeQuestion(questionId) {
-            const question = communityQuestions.find(q => q.id === questionId);
-            if (question) {
-                question.likes++;
-                loadCommunityQuestions();
-                showNotification('👍 Obrigado pelo seu apoio!', 'success');
+        // Generate like button HTML based on user state
+        function getLikeButtonHTML(questionId, likes) {
+            if (!currentUser) {
+                // User not logged in - show disabled button
+                return `
+                    <button onclick="showLoginRequired()" class="flex items-center space-x-1 text-gray-400 cursor-not-allowed" title="Faça login para curtir">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"/>
+                        </svg>
+                        <span>${likes}</span>
+                    </button>
+                `;
             }
+            
+            const hasLiked = hasUserLikedQuestion(questionId);
+            const isAdmin = isDeveloperMode;
+            
+            if (isAdmin) {
+                // Admin can always change likes
+                return `
+                    <div class="flex items-center space-x-2">
+                        <button onclick="likeQuestion(${questionId})" class="flex items-center space-x-1 ${hasLiked ? 'text-primary' : 'text-gray-500'} hover:text-primary transition-colors" title="${hasLiked ? 'Remover like' : 'Curtir consulta'}">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"/>
+                            </svg>
+                            <span>${likes}</span>
+                        </button>
+                        <span class="text-xs text-red-500 font-semibold" title="Modo Administrador">🔧</span>
+                    </div>
+                `;
+            } else if (hasLiked) {
+                // User already liked - show liked state (can't unlike)
+                return `
+                    <button class="flex items-center space-x-1 text-primary cursor-default" title="Você já curtiu esta consulta">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"/>
+                        </svg>
+                        <span>${likes}</span>
+                        <span class="text-xs text-primary ml-1">✓</span>
+                    </button>
+                `;
+            } else {
+                // User can like
+                return `
+                    <button onclick="likeQuestion(${questionId})" class="flex items-center space-x-1 text-gray-500 hover:text-primary transition-colors" title="Curtir consulta">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z"/>
+                        </svg>
+                        <span>${likes}</span>
+                    </button>
+                `;
+            }
+        }
+        
+        // Show login required message
+        function showLoginRequired() {
+            showNotification('Faça login para curtir consultas da comunidade! 🔑', 'info');
+        }
+        
+        // Like question with restrictions
+        function likeQuestion(questionId) {
+            if (!currentUser) {
+                showLoginRequired();
+                return;
+            }
+            
+            const question = communityQuestions.find(q => q.id === questionId);
+            if (!question) return;
+            
+            const hasLiked = hasUserLikedQuestion(questionId);
+            const isAdmin = isDeveloperMode;
+            
+            if (isAdmin) {
+                // Admin can toggle likes freely
+                if (hasLiked) {
+                    // Remove like
+                    question.likes = Math.max(0, question.likes - 1);
+                    removeUserLike(questionId);
+                    showNotification('👎 Like removido (Modo Admin)', 'info');
+                    console.log(`🔧 Admin removeu like da pergunta ${questionId}`);
+                } else {
+                    // Add like
+                    question.likes++;
+                    addUserLike(questionId);
+                    showNotification('👍 Like adicionado (Modo Admin)', 'success');
+                    console.log(`🔧 Admin adicionou like na pergunta ${questionId}`);
+                }
+            } else if (!hasLiked) {
+                // Regular user can only like once
+                question.likes++;
+                addUserLike(questionId);
+                showNotification('👍 Obrigado pelo seu apoio!', 'success');
+                console.log(`👍 Usuário ${currentUser.username} curtiu a pergunta ${questionId}`);
+            } else {
+                // User already liked
+                showNotification('Você já curtiu esta consulta! 😊', 'info');
+                return;
+            }
+            
+            // Save to localStorage
+            saveQuestionsToStorage();
+            
+            // Reload questions to update UI
+            loadCommunityQuestions();
         }
 
         // Get answers for questions (simulated)
         function getAnswerForQuestion(questionId) {
             const answers = {
-                1: "Sim! Qualquer trabalho além de 8 horas diárias deve ser remunerado como hora extra, com adicional mínimo de 50% sobre o valor da hora normal. Isso está garantido pela CLT.",
-                3: "Você tem estabilidade no emprego desde a confirmação da gravidez até 5 meses após o parto. Procure o sindicato da sua categoria ou a Defensoria Pública para orientação sobre assédio moral."
+                1: "Conforme estabelecido no artigo 59 da CLT, a jornada de trabalho poderá ser acrescida de horas suplementares, em número não excedente de 2 (duas) por dia, mediante acordo escrito entre empregador e empregado, ou mediante contrato coletivo de trabalho. O adicional de horas extras é de no mínimo 50% sobre o valor da hora normal, podendo ser superior conforme convenção coletiva da categoria.",
+                3: "A gestante possui estabilidade provisória no emprego desde a confirmação da gravidez até cinco meses após o parto, conforme artigo 10, II, 'b' do ADCT da Constituição Federal. Em casos de assédio moral, recomenda-se documentar as ocorrências e buscar orientação junto ao Ministério Público do Trabalho, sindicato da categoria ou Defensoria Pública, que poderão adotar as medidas cabíveis para cessação da conduta discriminatória."
             };
-            return answers[questionId] || "Nossa equipe está analisando sua pergunta e em breve fornecerá uma resposta detalhada.";
+            return answers[questionId] || "Nossa equipe jurídica está realizando análise detalhada de sua consulta. Em breve será fornecido parecer fundamentado com base na legislação trabalhista vigente.";
         }
 
         // Update question count
         function updateQuestionCount() {
-            document.getElementById('questionCount').textContent = communityQuestions.length;
+            const count = communityQuestions.length;
+            const countElement = document.getElementById('questionCount');
+            if (countElement) {
+                countElement.textContent = count;
+                // Update the text after the count
+                const parentElement = countElement.parentElement;
+                if (parentElement) {
+                    parentElement.innerHTML = `<span id="questionCount">${count}</span> consultas jurídicas`;
+                }
+            }
         }
 
         // Character count for question textarea
@@ -1656,9 +2060,9 @@
                 charCount.textContent = count;
                 
                 // Change color based on character count
-                if (count > 450) {
+                if (count > 900) {
                     charCount.style.color = '#ef4444'; // red
-                } else if (count > 350) {
+                } else if (count > 750) {
                     charCount.style.color = '#f59e0b'; // yellow
                 } else {
                     charCount.style.color = '#6b7280'; // gray
@@ -1898,6 +2302,22 @@
             }
             
             // Initialize FAQ Community System
+            loadQuestionsFromStorage(); // Load questions from localStorage first
+            
+            // Check if user was logged in
+            if (loadUserFromStorage()) {
+                // User was logged in, restore their session
+                document.getElementById('loggedUsername').textContent = currentUser.username;
+                document.getElementById('loggedUserEmail').textContent = currentUser.email;
+                document.getElementById('userInitials').textContent = currentUser.initials;
+                
+                // Show question form, hide login form
+                document.getElementById('loginForm').classList.add('hidden');
+                document.getElementById('questionForm').classList.remove('hidden');
+                
+                console.log('👤 Sessão do usuário restaurada:', currentUser.username);
+            }
+            
             loadCommunityQuestions();
             updateQuestionCount();
             
@@ -1906,10 +2326,10 @@
             if (questionTextarea) {
                 questionTextarea.addEventListener('input', updateCharCount);
                 questionTextarea.addEventListener('keydown', function(e) {
-                    // Allow Enter for line breaks, but limit to 500 characters
-                    if (this.value.length >= 500 && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'ArrowUp' && e.key !== 'ArrowDown') {
+                    // Allow Enter for line breaks, but limit to 1000 characters
+                    if (this.value.length >= 1000 && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'ArrowUp' && e.key !== 'ArrowDown') {
                         e.preventDefault();
-                        showNotification('Limite de 500 caracteres atingido!', 'warning');
+                        showNotification('Limite de 1000 caracteres atingido!', 'warning');
                     }
                 });
                 console.log('✅ Event listeners adicionados ao textarea de perguntas');
@@ -1950,7 +2370,315 @@
             console.log('   ✅ Respostas da equipe');
             console.log('   📊 Contador de caracteres');
             console.log('   🔔 Notificações em tempo real');
+            console.log('   🔧 Painel do desenvolvedor (Ctrl+Y+I)');
         });
+
+        // Developer Panel Functions
+        let isDeveloperMode = false;
+        let currentDeveloperTab = 'manage';
+
+        function openDeveloperPanel() {
+            if (!isDeveloperMode) {
+                isDeveloperMode = true;
+                const panel = document.getElementById('developerPanel');
+                if (panel) {
+                    panel.classList.remove('hidden');
+                    showDeveloperTab('manage');
+                    updateDeveloperStats();
+                    loadDeveloperQuestions();
+                    loadPendingQuestions();
+                    
+                    // Scroll to developer panel
+                    panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    showNotification('🔧 Painel do Desenvolvedor ativado! Acesso administrativo liberado.', 'warning');
+                    console.log('🔧 PAINEL DO DESENVOLVEDOR ATIVADO!');
+                    console.log('📋 Funcionalidades administrativas:');
+                    console.log('   🗑️ Excluir perguntas de usuários');
+                    console.log('   💬 Responder perguntas pendentes');
+                    console.log('   📊 Visualizar estatísticas do sistema');
+                    console.log('   🔧 Ferramentas de gerenciamento');
+                }
+            }
+        }
+
+        function closeDeveloperPanel() {
+            isDeveloperMode = false;
+            const panel = document.getElementById('developerPanel');
+            if (panel) {
+                panel.classList.add('hidden');
+                showNotification('🔧 Painel do Desenvolvedor fechado.', 'info');
+                console.log('🔧 Painel do desenvolvedor fechado');
+            }
+        }
+
+        function showDeveloperTab(tabName) {
+            currentDeveloperTab = tabName;
+            
+            // Hide all tabs
+            document.getElementById('devManageTab').classList.add('hidden');
+            document.getElementById('devAnswerTab').classList.add('hidden');
+            document.getElementById('devStatsTab').classList.add('hidden');
+            
+            // Reset all tab buttons
+            document.getElementById('devTabManage').className = 'bg-red-700 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-600 transition-colors';
+            document.getElementById('devTabAnswer').className = 'bg-red-700 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-600 transition-colors';
+            document.getElementById('devTabStats').className = 'bg-red-700 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-600 transition-colors';
+            
+            // Show selected tab and highlight button
+            if (tabName === 'manage') {
+                document.getElementById('devManageTab').classList.remove('hidden');
+                document.getElementById('devTabManage').className = 'bg-white text-red-600 px-4 py-2 rounded-lg font-semibold hover:bg-red-50 transition-colors';
+                loadDeveloperQuestions();
+            } else if (tabName === 'answer') {
+                document.getElementById('devAnswerTab').classList.remove('hidden');
+                document.getElementById('devTabAnswer').className = 'bg-white text-red-600 px-4 py-2 rounded-lg font-semibold hover:bg-red-50 transition-colors';
+                loadPendingQuestions();
+            } else if (tabName === 'stats') {
+                document.getElementById('devStatsTab').classList.remove('hidden');
+                document.getElementById('devTabStats').className = 'bg-white text-red-600 px-4 py-2 rounded-lg font-semibold hover:bg-red-50 transition-colors';
+                updateDeveloperStats();
+            }
+        }
+
+        function loadDeveloperQuestions() {
+            const container = document.getElementById('devQuestionsList');
+            if (!container) return;
+            
+            if (communityQuestions.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-center py-4">Nenhuma consulta para gerenciar.</p>';
+                return;
+            }
+            
+            container.innerHTML = communityQuestions.map(q => `
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div class="flex-1">
+                        <div class="flex items-center mb-1">
+                            <span class="font-semibold text-sm">${q.username}</span>
+                            <span class="ml-2 px-2 py-1 text-xs rounded-full ${q.status === 'answered' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}">
+                                ${q.status === 'answered' ? 'Respondida' : 'Pendente'}
+                            </span>
+                        </div>
+                        <p class="text-xs text-gray-600 truncate">${q.question.substring(0, 80)}...</p>
+                        <p class="text-xs text-gray-400">${q.timestamp} • ${q.likes} likes</p>
+                    </div>
+                    <button onclick="deleteQuestion(${q.id})" class="ml-3 bg-red-500 text-white px-3 py-1 rounded text-xs hover:bg-red-600 transition-colors">
+                        🗑️ Excluir
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function loadPendingQuestions() {
+            const container = document.getElementById('devPendingQuestions');
+            if (!container) return;
+            
+            const pendingQuestions = communityQuestions.filter(q => q.status === 'pending');
+            
+            if (pendingQuestions.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-center py-4">Nenhuma consulta pendente para responder.</p>';
+                return;
+            }
+            
+            container.innerHTML = pendingQuestions.map(q => `
+                <div class="p-3 bg-gray-50 rounded-lg">
+                    <div class="flex items-center justify-between mb-2">
+                        <div class="flex items-center">
+                            <span class="font-semibold text-sm">${q.username}</span>
+                            <span class="ml-2 text-xs text-gray-500">${q.timestamp}</span>
+                        </div>
+                        <span class="text-xs text-gray-400">ID: ${q.id}</span>
+                    </div>
+                    <p class="text-sm text-gray-700 mb-3">${q.question}</p>
+                    <div class="flex gap-2">
+                        <button onclick="answerQuestion(${q.id})" class="bg-green-500 text-white px-3 py-1 rounded text-xs hover:bg-green-600 transition-colors">
+                            ✅ Marcar como Respondida
+                        </button>
+                        <button onclick="adminEditLikes(${q.id})" class="bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600 transition-colors">
+                            👍 Editar Likes (${q.likes})
+                        </button>
+                        <button onclick="deleteQuestion(${q.id})" class="bg-red-500 text-white px-3 py-1 rounded text-xs hover:bg-red-600 transition-colors">
+                            🗑️ Excluir
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateDeveloperStats() {
+            const total = communityQuestions.length;
+            const answered = communityQuestions.filter(q => q.status === 'answered').length;
+            const pending = communityQuestions.filter(q => q.status === 'pending').length;
+            
+            const totalElement = document.getElementById('totalQuestions');
+            const answeredElement = document.getElementById('answeredQuestions');
+            const pendingElement = document.getElementById('pendingQuestions');
+            
+            if (totalElement) totalElement.textContent = total;
+            if (answeredElement) answeredElement.textContent = answered;
+            if (pendingElement) pendingElement.textContent = pending;
+        }
+
+        function deleteQuestion(questionId) {
+            if (confirm('⚠️ Tem certeza que deseja excluir esta consulta jurídica? Esta ação não pode ser desfeita.')) {
+                const questionIndex = communityQuestions.findIndex(q => q.id === questionId);
+                if (questionIndex !== -1) {
+                    const deletedQuestion = communityQuestions[questionIndex];
+                    communityQuestions.splice(questionIndex, 1);
+                    
+                    // Save to localStorage
+                    saveQuestionsToStorage();
+                    
+                    // Update all displays
+                    loadCommunityQuestions();
+                    updateQuestionCount();
+                    loadDeveloperQuestions();
+                    loadPendingQuestions();
+                    updateDeveloperStats();
+                    
+                    showNotification(`🗑️ Consulta de "${deletedQuestion.username}" excluída com sucesso!`, 'success');
+                    console.log(`🗑️ Pergunta ID ${questionId} excluída pelo desenvolvedor`);
+                }
+            }
+        }
+
+        function answerQuestion(questionId) {
+            const question = communityQuestions.find(q => q.id === questionId);
+            if (question && question.status === 'pending') {
+                question.status = 'answered';
+                
+                // Save to localStorage
+                saveQuestionsToStorage();
+                
+                // Update all displays
+                loadCommunityQuestions();
+                loadDeveloperQuestions();
+                loadPendingQuestions();
+                updateDeveloperStats();
+                
+                showNotification(`✅ Consulta de "${question.username}" marcada como respondida!`, 'success');
+                console.log(`✅ Pergunta ID ${questionId} marcada como respondida pelo desenvolvedor`);
+            }
+        }
+
+        function clearAllQuestions() {
+            if (confirm('⚠️ ATENÇÃO: Tem certeza que deseja excluir TODAS as consultas jurídicas? Esta ação não pode ser desfeita!')) {
+                if (confirm('🚨 CONFIRMAÇÃO FINAL: Isso irá apagar permanentemente todas as consultas da comunidade. Continuar?')) {
+                    const count = communityQuestions.length;
+                    communityQuestions.length = 0; // Clear array
+                    
+                    // Save to localStorage
+                    saveQuestionsToStorage();
+                    
+                    // Update all displays
+                    loadCommunityQuestions();
+                    updateQuestionCount();
+                    loadDeveloperQuestions();
+                    loadPendingQuestions();
+                    updateDeveloperStats();
+                    
+                    showNotification(`🗑️ Todas as ${count} consultas foram excluídas!`, 'warning');
+                    console.log(`🗑️ Todas as ${count} perguntas foram excluídas pelo desenvolvedor`);
+                }
+            }
+        }
+
+        function generateSampleQuestions() {
+            const sampleQuestions = [
+                {
+                    id: Date.now() + 1,
+                    username: "Carlos Eduardo Silva",
+                    email: "carlos.silva@email.com",
+                    question: "Preciso de esclarecimentos sobre o cálculo correto das horas extraordinárias. Trabalho em uma empresa de tecnologia e frequentemente excedo as 8 horas diárias. Qual é o percentual de adicional que devo receber e existe alguma limitação legal para a quantidade de horas extras?",
+                    timestamp: new Date().toLocaleString('pt-BR'),
+                    likes: Math.floor(Math.random() * 20),
+                    status: 'pending'
+                },
+                {
+                    id: Date.now() + 2,
+                    username: "Fernanda Costa Santos",
+                    email: "fernanda.santos@email.com",
+                    question: "Estou grávida de 3 meses e minha chefia tem demonstrado comportamento hostil desde que comuniquei a gravidez. Gostaria de saber quais são meus direitos como gestante e que medidas posso tomar para me proteger de possível discriminação no ambiente de trabalho.",
+                    timestamp: new Date().toLocaleString('pt-BR'),
+                    likes: Math.floor(Math.random() * 15),
+                    status: 'pending'
+                },
+                {
+                    id: Date.now() + 3,
+                    username: "Roberto Almeida Junior",
+                    email: "roberto.almeida@email.com",
+                    question: "Trabalho como vendedor e meu empregador quer descontar do meu salário o valor de produtos que foram danificados durante meu turno. Isso é legal? Existe alguma limitação sobre o percentual que pode ser descontado do salário do trabalhador?",
+                    timestamp: new Date().toLocaleString('pt-BR'),
+                    likes: Math.floor(Math.random() * 10),
+                    status: 'answered'
+                }
+            ];
+            
+            // Add sample questions to the beginning of the array
+            communityQuestions.unshift(...sampleQuestions);
+            
+            // Save to localStorage
+            saveQuestionsToStorage();
+            
+            // Update all displays
+            loadCommunityQuestions();
+            updateQuestionCount();
+            loadDeveloperQuestions();
+            loadPendingQuestions();
+            updateDeveloperStats();
+            
+            showNotification(`📝 ${sampleQuestions.length} consultas de exemplo foram geradas!`, 'success');
+            console.log(`📝 ${sampleQuestions.length} perguntas de exemplo geradas pelo desenvolvedor`);
+        }
+
+        function adminEditLikes(questionId) {
+            const question = communityQuestions.find(q => q.id === questionId);
+            if (!question) return;
+            
+            const newLikes = prompt(`Editar número de likes para a consulta de "${question.username}":\n\nLikes atuais: ${question.likes}`, question.likes);
+            
+            if (newLikes !== null) {
+                const likesNumber = parseInt(newLikes);
+                if (!isNaN(likesNumber) && likesNumber >= 0) {
+                    question.likes = likesNumber;
+                    
+                    // Save to localStorage
+                    saveQuestionsToStorage();
+                    
+                    // Update all displays
+                    loadCommunityQuestions();
+                    loadDeveloperQuestions();
+                    loadPendingQuestions();
+                    
+                    showNotification(`👍 Likes da consulta alterados para ${likesNumber}!`, 'success');
+                    console.log(`🔧 Admin alterou likes da pergunta ${questionId} para ${likesNumber}`);
+                } else {
+                    showNotification('❌ Por favor, digite um número válido maior ou igual a 0!', 'error');
+                }
+            }
+        }
+        
+        function exportQuestions() {
+            if (communityQuestions.length === 0) {
+                showNotification('📤 Não há consultas para exportar!', 'warning');
+                return;
+            }
+            
+            const dataStr = JSON.stringify(communityQuestions, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `consultas_juridicas_${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            showNotification(`📤 ${communityQuestions.length} consultas exportadas com sucesso!`, 'success');
+            console.log(`📤 ${communityQuestions.length} perguntas exportadas pelo desenvolvedor`);
+        }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97440633f47301c3',t:'MTc1NjA1MDgyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9744b06a5776f61c',t:'MTc1NjA1Nzc5Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
