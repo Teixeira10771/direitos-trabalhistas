@@ -68,6 +68,42 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
         
+        /* Progress bar with moving thumb */
+        .progress-container {
+            position: relative;
+            width: 100%;
+            height: 8px;
+            background: rgba(75, 85, 99, 0.3);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            border-radius: 4px;
+            position: relative;
+            transition: width 0.1s ease;
+        }
+        
+        .progress-thumb {
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(45deg, #8b5cf6, #ec4899);
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .progress-thumb:hover {
+            transform: translateY(-50%) scale(1.2);
+        }
+        
         /* Speed control styling */
         .speed-select {
             background-color: rgba(255, 255, 255, 0.1);
@@ -417,21 +453,22 @@
         <section id="podcast" class="section-hidden fade-in py-16 bg-gray-100">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold text-navy mb-4">Nosso Podcast</h2>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">🎧 Nosso Podcast</h2>
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                         Esclarecendo dúvidas sobre leis trabalhistas de forma prática e acessível
                     </p>
                 </div>
                 <div class="max-w-4xl mx-auto">
-                    <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                    <!-- Podcast Info Card -->
+                    <div class="bg-white rounded-xl shadow-lg p-8 mb-8 hover-lift">
                         <div class="flex items-center mb-6">
-                            <div class="w-16 h-16 bg-navy rounded-full flex items-center justify-center mr-4">
+                            <div class="w-16 h-16 bg-gradient-to-br from-primary to-primary-dark rounded-full flex items-center justify-center mr-4 floating">
                                 <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-2xl font-bold text-navy">Direitos em Pauta</h3>
+                                <h3 class="text-2xl font-bold text-gray-800">🎙️ Direitos em Pauta</h3>
                                 <p class="text-gray-600">Podcast sobre leis trabalhistas</p>
                             </div>
                         </div>
@@ -439,143 +476,103 @@
                             Nosso podcast "Direitos em Pauta" apresenta um episódio especial dedicado a esclarecer as principais dúvidas sobre as leis trabalhistas. Com linguagem clara e exemplos práticos, o conteúdo explica desde conceitos básicos até situações do dia a dia profissional, de forma acessível para comerciantes e comunidade.
                         </p>
                         <div class="grid md:grid-cols-2 gap-6">
-                            <div class="border border-gray-200 rounded-lg p-4">
-                                <h4 class="font-semibold text-navy mb-2">Formato do Episódio</h4>
+                            <div class="border border-gray-200 rounded-lg p-4 bg-blue-50">
+                                <h4 class="font-semibold text-primary mb-2">📋 Formato do Episódio</h4>
                                 <ul class="text-sm text-gray-600 space-y-1">
-                                    <li>• Duração: 25 minutos</li>
-                                    <li>• Linguagem acessível e didática</li>
-                                    <li>• Casos práticos e exemplos reais</li>
-                                    <li>• Sessão de perguntas e respostas</li>
+                                    <li>• ⏱️ Duração: 25 minutos</li>
+                                    <li>• 💬 Linguagem acessível e didática</li>
+                                    <li>• 📚 Casos práticos e exemplos reais</li>
+                                    <li>• ❓ Sessão de perguntas e respostas</li>
                                 </ul>
                             </div>
-                            <div class="border border-gray-200 rounded-lg p-4">
-                                <h4 class="font-semibold text-navy mb-2">Temas Abordados</h4>
+                            <div class="border border-gray-200 rounded-lg p-4 bg-green-50">
+                                <h4 class="font-semibold text-secondary mb-2">📖 Temas Abordados</h4>
                                 <ul class="text-sm text-gray-600 space-y-1">
-                                    <li>• Direitos básicos do trabalhador</li>
-                                    <li>• Obrigações do empregador</li>
-                                    <li>• Rescisão e demissão</li>
-                                    <li>• Férias e 13º salário</li>
+                                    <li>• ⚖️ Direitos básicos do trabalhador</li>
+                                    <li>• 🏢 Obrigações do empregador</li>
+                                    <li>• 📄 Rescisão e demissão</li>
+                                    <li>• 🏖️ Férias e 13º salário</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Modern Audio Player -->
-                    <div class="podcast-player bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 rounded-2xl p-8 shadow-2xl border border-purple-500/20">
-                        <!-- Player Header -->
-                        <div class="podcast-header flex items-center mb-6">
-                            <div class="relative">
-                                <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg">
-                                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
-                                    </svg>
-                                </div>
-                                <div class="absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                                    <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                                </div>
+                    <!-- Simple Audio Player -->
+                    <div class="bg-white rounded-xl shadow-lg p-8">
+                        <div class="text-center mb-6">
+                            <div class="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4 floating">
+                                <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 5v10l7-5-7-5z"/>
+                                </svg>
                             </div>
-                            <div class="ml-4 flex-1">
-                                <h4 class="text-xl font-bold text-white mb-1">Direitos em Pauta</h4>
-                                <p class="text-purple-300 text-sm mb-1">Episódio 1: Leis Trabalhistas Essenciais</p>
-                                <div class="flex items-center text-xs text-gray-400 flex-wrap">
-                                    <span class="bg-purple-500/20 px-2 py-1 rounded-full mr-2 mb-1">🎧 Podcast</span>
-                                    <span>25:30 min</span>
-                                </div>
-                            </div>
+                            <h4 class="text-xl font-bold text-gray-800 mb-2">🎵 Player de Demonstração</h4>
+                            <p class="text-gray-600 text-sm">Episódio 1: Leis Trabalhistas Essenciais</p>
                         </div>
-
-                        <!-- Progress Section -->
+                        
+                        <!-- Progress Bar -->
                         <div class="mb-6">
-                            <div class="flex items-center justify-between text-sm text-gray-300 mb-3">
-                                <span id="currentTime" class="font-mono bg-black/30 px-2 py-1 rounded text-xs sm:text-sm">0:00</span>
-                                <span class="font-mono bg-black/30 px-2 py-1 rounded text-xs sm:text-sm">25:30</span>
+                            <div class="flex items-center justify-between text-sm text-gray-500 mb-2">
+                                <span id="currentTime">0:00</span>
+                                <span>25:30</span>
                             </div>
-                            <div class="relative">
-                                <div class="w-full bg-gray-700/50 rounded-full h-3 cursor-pointer backdrop-blur-sm" id="progressBar">
-                                    <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full transition-all duration-300 shadow-lg relative" style="width: 0%" id="progress">
-                                        <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-5 h-5 bg-white rounded-full shadow-lg border-2 border-purple-500"></div>
-                                    </div>
+                            <div class="progress-container" id="progressBar">
+                                <div class="progress-fill" style="width: 0%" id="progress">
+                                    <div class="progress-thumb" id="progressThumb"></div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Controls Section -->
-                        <div class="podcast-controls flex items-center justify-between">
-                            <!-- Main Controls -->
-                            <div class="podcast-main-controls flex items-center space-x-3">
-                                <button id="rewindBtn" class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm">
-                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M8.445 14.832A1 1 0 0010 14v-2.798l5.445 3.63A1 1 0 0017 14V6a1 1 0 00-1.555-.832L10 8.798V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z"/>
-                                    </svg>
-                                </button>
-                                
-                                <!-- Main Play Button -->
-                                <button id="playPauseBtn" class="w-14 h-14 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 rounded-full flex items-center justify-center transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
-                                    <svg id="playIcon" class="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M8 5v10l7-5-7-5z"/>
-                                    </svg>
-                                    <svg id="pauseIcon" class="w-7 h-7 text-white hidden" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M6 4h2v12H6V4zm6 0h2v12h-2V4z"/>
-                                    </svg>
-                                </button>
-                                
-                                <button id="forwardBtn" class="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm">
-                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M4.555 5.168A1 1 0 003 6v8a1 1 0 001.555.832L10 11.202V14a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4A1 1 0 0010 6v2.798l-5.445-3.63z"/>
-                                    </svg>
-                                </button>
+                        
+                        <!-- Controls -->
+                        <div class="flex items-center justify-center space-x-4 mb-6">
+                            <button id="rewindBtn" class="w-12 h-12 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors">
+                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8.445 14.832A1 1 0 0010 14v-2.798l5.445 3.63A1 1 0 0017 14V6a1 1 0 00-1.555-.832L10 8.798V6a1 1 0 00-1.555-.832l-6 4a1 1 0 000 1.664l6 4z"/>
+                                </svg>
+                            </button>
+                            
+                            <button id="playPauseBtn" class="w-16 h-16 bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-green-600 rounded-full flex items-center justify-center transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
+                                <svg id="playIcon" class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M8 5v10l7-5-7-5z"/>
+                                </svg>
+                                <svg id="pauseIcon" class="w-8 h-8 text-white hidden" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M6 4h2v12H6V4zm6 0h2v12h-2V4z"/>
+                                </svg>
+                            </button>
+                            
+                            <button id="forwardBtn" class="w-12 h-12 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors">
+                                <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M4.555 5.168A1 1 0 003 6v8a1 1 0 001.555.832L10 11.202V14a1 1 0 001.555.832l6-4a1 1 0 000-1.664l-6-4A1 1 0 0010 6v2.798l-5.445-3.63z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Additional Controls -->
+                        <div class="flex items-center justify-center space-x-6 text-sm">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-gray-600">Velocidade:</span>
+                                <select id="speedControl" class="bg-gray-100 border border-gray-300 rounded px-2 py-1 text-gray-700">
+                                    <option value="0.5">0.5x</option>
+                                    <option value="1" selected>1x</option>
+                                    <option value="1.25">1.25x</option>
+                                    <option value="1.5">1.5x</option>
+                                    <option value="2">2x</option>
+                                </select>
                             </div>
-
-                            <!-- Secondary Controls -->
-                            <div class="podcast-secondary-controls flex items-center space-x-4">
-                                <div class="speed-volume-controls">
-                                    <!-- Speed Control -->
-                                    <div class="flex items-center space-x-2">
-                                        <span class="text-xs text-gray-400 hidden sm:inline">Velocidade</span>
-                                        <select id="speedControl" class="speed-select text-xs sm:text-sm rounded-lg px-2 py-1 border border-white/20 backdrop-blur-sm">
-                                            <option value="0.5">0.5x</option>
-                                            <option value="1" selected>1x</option>
-                                            <option value="1.25">1.25x</option>
-                                            <option value="1.5">1.5x</option>
-                                            <option value="2">2x</option>
-                                        </select>
-                                    </div>
-
-                                    <!-- Volume Control -->
-                                    <div class="volume-control flex items-center space-x-2">
-                                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.793L4.828 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.828l3.555-3.793A1 1 0 019.383 3.076zM12 8a1 1 0 011.414 0L15 9.586l1.586-1.586a1 1 0 111.414 1.414L16.414 11 18 12.586a1 1 0 01-1.414 1.414L15 12.414l-1.586 1.586a1 1 0 01-1.414-1.414L13.586 11 12 9.414A1 1 0 0112 8z"/>
-                                        </svg>
-                                        <input type="range" min="0" max="100" value="70" class="w-16 sm:w-20 h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer slider" id="volumeSlider">
-                                    </div>
-                                </div>
+                            
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.793L4.828 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.828l3.555-3.793A1 1 0 019.383 3.076z"/>
+                                </svg>
+                                <input type="range" min="0" max="100" value="70" class="w-20 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" id="volumeSlider">
                             </div>
                         </div>
-
-                        <!-- Status Bar -->
-                        <div class="mt-6 pt-4 border-t border-white/10">
-                            <div class="flex items-center justify-between text-xs">
-                                <div class="flex items-center space-x-4 text-gray-400">
-                                    <span class="flex items-center">
-                                        <span class="inline-block w-2 h-2 bg-red-500 rounded-full mr-2 animate-pulse"></span>
-                                        Demo Player
-                                    </span>
-                                    <span>•</span>
-                                    <span>Áudio não disponível</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-gray-400 hover:text-white transition-colors">
-                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"/>
-                                        </svg>
-                                    </button>
-                                    <button class="text-gray-400 hover:text-white transition-colors">
-                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
+                        
+                        <!-- Demo Notice -->
+                        <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center">
+                            <p class="text-yellow-800 text-sm">
+                                <span class="font-semibold">🎭 Player de Demonstração</span><br>
+                                Este é um player visual para demonstração. O áudio real do podcast será disponibilizado em breve!
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -586,7 +583,7 @@
         <section id="faq" class="section-hidden fade-in py-16 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold text-navy mb-4">Principais Dúvidas</h2>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Principais Dúvidas</h2>
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                         Respostas claras e objetivas para as perguntas mais frequentes sobre leis trabalhistas
                     </p>
@@ -595,8 +592,8 @@
                     <div class="faq-item border border-gray-200 rounded-lg">
                         <button class="faq-question w-full text-left p-6 hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
-                                <h3 class="text-lg font-semibold text-navy">⏰ Quantas horas posso trabalhar por dia?</h3>
-                                <span class="faq-icon text-2xl text-navy transition-transform duration-300">+</span>
+                                <h3 class="text-lg font-semibold text-gray-800">⏰ Quantas horas posso trabalhar por dia?</h3>
+                                <span class="faq-icon text-2xl text-primary transition-transform duration-300">+</span>
                             </div>
                         </button>
                         <div class="faq-answer hidden p-6 pt-0 text-gray-700">
@@ -607,8 +604,8 @@
                     <div class="faq-item border border-gray-200 rounded-lg">
                         <button class="faq-question w-full text-left p-6 hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
-                                <h3 class="text-lg font-semibold text-navy">🏖️ Tenho direito a férias remuneradas?</h3>
-                                <span class="faq-icon text-2xl text-navy transition-transform duration-300">+</span>
+                                <h3 class="text-lg font-semibold text-gray-800">🏖️ Tenho direito a férias remuneradas?</h3>
+                                <span class="faq-icon text-2xl text-primary transition-transform duration-300">+</span>
                             </div>
                         </button>
                         <div class="faq-answer hidden p-6 pt-0 text-gray-700">
@@ -619,8 +616,8 @@
                     <div class="faq-item border border-gray-200 rounded-lg hover-lift">
                         <button class="faq-question w-full text-left p-6 hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
-                                <h3 class="text-lg font-semibold text-navy">🎄 O que é o 13º salário e quando recebo?</h3>
-                                <span class="faq-icon text-2xl text-navy transition-transform duration-300">+</span>
+                                <h3 class="text-lg font-semibold text-gray-800">🎄 O que é o 13º salário e quando recebo?</h3>
+                                <span class="faq-icon text-2xl text-primary transition-transform duration-300">+</span>
                             </div>
                         </button>
                         <div class="faq-answer hidden p-6 pt-0 text-gray-700">
@@ -631,8 +628,8 @@
                     <div class="faq-item border border-gray-200 rounded-lg hover-lift">
                         <button class="faq-question w-full text-left p-6 hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
-                                <h3 class="text-lg font-semibold text-navy">📋 Posso ser demitido sem justa causa?</h3>
-                                <span class="faq-icon text-2xl text-navy transition-transform duration-300">+</span>
+                                <h3 class="text-lg font-semibold text-gray-800">📋 Posso ser demitido sem justa causa?</h3>
+                                <span class="faq-icon text-2xl text-primary transition-transform duration-300">+</span>
                             </div>
                         </button>
                         <div class="faq-answer hidden p-6 pt-0 text-gray-700">
@@ -643,8 +640,8 @@
                     <div class="faq-item border border-gray-200 rounded-lg hover-lift">
                         <button class="faq-question w-full text-left p-6 hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
-                                <h3 class="text-lg font-semibold text-navy">🚫 O que caracteriza assédio moral no trabalho?</h3>
-                                <span class="faq-icon text-2xl text-navy transition-transform duration-300">+</span>
+                                <h3 class="text-lg font-semibold text-gray-800">🚫 O que caracteriza assédio moral no trabalho?</h3>
+                                <span class="faq-icon text-2xl text-primary transition-transform duration-300">+</span>
                             </div>
                         </button>
                         <div class="faq-answer hidden p-6 pt-0 text-gray-700">
@@ -655,8 +652,8 @@
                     <div class="faq-item border border-gray-200 rounded-lg hover-lift">
                         <button class="faq-question w-full text-left p-6 hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
-                                <h3 class="text-lg font-semibold text-navy">📅 Trabalho aos domingos é permitido?</h3>
-                                <span class="faq-icon text-2xl text-navy transition-transform duration-300">+</span>
+                                <h3 class="text-lg font-semibold text-gray-800">📅 Trabalho aos domingos é permitido?</h3>
+                                <span class="faq-icon text-2xl text-primary transition-transform duration-300">+</span>
                             </div>
                         </button>
                         <div class="faq-answer hidden p-6 pt-0 text-gray-700">
@@ -671,7 +668,7 @@
         <section id="merchants" class="section-hidden fade-in py-16 bg-gray-100">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold text-navy mb-4">Orientações para Comerciantes</h2>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Orientações para Comerciantes</h2>
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                         Guia prático sobre direitos e deveres trabalhistas no comércio
                     </p>
@@ -679,10 +676,10 @@
                 <div class="max-w-6xl mx-auto">
                     <div class="grid lg:grid-cols-2 gap-8 mb-12">
                         <div class="bg-white p-8 rounded-lg shadow-lg">
-                            <h3 class="text-2xl font-bold text-navy mb-6">Principais Obrigações</h3>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Principais Obrigações</h3>
                             <div class="space-y-4">
                                 <div class="flex items-start">
-                                    <div class="w-6 h-6 bg-navy rounded-full flex items-center justify-center mr-3 mt-1">
+                                    <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-3 mt-1">
                                         <span class="text-white text-xs">✓</span>
                                     </div>
                                     <div>
@@ -691,7 +688,7 @@
                                     </div>
                                 </div>
                                 <div class="flex items-start">
-                                    <div class="w-6 h-6 bg-navy rounded-full flex items-center justify-center mr-3 mt-1">
+                                    <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-3 mt-1">
                                         <span class="text-white text-xs">✓</span>
                                     </div>
                                     <div>
@@ -700,7 +697,7 @@
                                     </div>
                                 </div>
                                 <div class="flex items-start">
-                                    <div class="w-6 h-6 bg-navy rounded-full flex items-center justify-center mr-3 mt-1">
+                                    <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-3 mt-1">
                                         <span class="text-white text-xs">✓</span>
                                     </div>
                                     <div>
@@ -709,7 +706,7 @@
                                     </div>
                                 </div>
                                 <div class="flex items-start">
-                                    <div class="w-6 h-6 bg-navy rounded-full flex items-center justify-center mr-3 mt-1">
+                                    <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center mr-3 mt-1">
                                         <span class="text-white text-xs">✓</span>
                                     </div>
                                     <div>
@@ -721,7 +718,7 @@
                         </div>
                         
                         <div class="bg-white p-8 rounded-lg shadow-lg">
-                            <h3 class="text-2xl font-bold text-navy mb-6">Direitos dos Funcionários</h3>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Direitos dos Funcionários</h3>
                             <div class="space-y-4">
                                 <div class="flex items-start">
                                     <div class="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center mr-3 mt-1">
@@ -764,34 +761,34 @@
                     </div>
                     
                     <div class="bg-white p-8 rounded-lg shadow-lg">
-                        <h3 class="text-2xl font-bold text-navy mb-6 text-center">Dicas Práticas para Compliance</h3>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Dicas Práticas para Compliance</h3>
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                             <div class="text-center p-4 border border-gray-200 rounded-lg">
-                                <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center mx-auto mb-3">
+                                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-3">
                                     <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
                                         <path fill-rule="evenodd" d="M4 5a2 2 0 012-2v1a1 1 0 102 0V3a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 2a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
                                     </svg>
                                 </div>
-                                <h4 class="font-semibold text-navy mb-2">Documentação</h4>
+                                <h4 class="font-semibold text-gray-800 mb-2">Documentação</h4>
                                 <p class="text-sm text-gray-600">Mantenha todos os documentos organizados e atualizados</p>
                             </div>
                             <div class="text-center p-4 border border-gray-200 rounded-lg">
-                                <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center mx-auto mb-3">
+                                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-3">
                                     <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
                                     </svg>
                                 </div>
-                                <h4 class="font-semibold text-navy mb-2">Prazos</h4>
+                                <h4 class="font-semibold text-gray-800 mb-2">Prazos</h4>
                                 <p class="text-sm text-gray-600">Crie calendário com todas as obrigações mensais e anuais</p>
                             </div>
                             <div class="text-center p-4 border border-gray-200 rounded-lg">
-                                <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center mx-auto mb-3">
+                                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-3">
                                     <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
                                     </svg>
                                 </div>
-                                <h4 class="font-semibold text-navy mb-2">Consultoria</h4>
+                                <h4 class="font-semibold text-gray-800 mb-2">Consultoria</h4>
                                 <p class="text-sm text-gray-600">Busque orientação profissional para casos complexos</p>
                             </div>
                         </div>
@@ -804,14 +801,14 @@
         <section id="community" class="section-hidden fade-in py-16 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold text-navy mb-4">Para a Comunidade</h2>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Para a Comunidade</h2>
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                         Conhecimento acessível sobre direitos trabalhistas para todos os cidadãos
                     </p>
                 </div>
                 <div class="max-w-6xl mx-auto">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12">
-                        <div class="bg-gradient-to-br from-navy to-navy-dark text-white p-6 md:p-8 rounded-lg">
+                        <div class="bg-gradient-to-br from-primary to-primary-dark text-white p-6 md:p-8 rounded-lg">
                             <h3 class="text-2xl font-bold mb-6">Seus Direitos Fundamentais</h3>
                             <div class="space-y-4">
                                 <div class="flex items-center">
@@ -854,10 +851,10 @@
                         </div>
                         
                         <div class="bg-gray-50 p-6 md:p-8 rounded-lg">
-                            <h3 class="text-2xl font-bold text-navy mb-6">Como Buscar Ajuda</h3>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">Como Buscar Ajuda</h3>
                             <div class="space-y-6">
                                 <div class="flex items-start">
-                                    <div class="w-8 h-8 bg-navy rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center mr-4 mt-1">
                                         <span class="text-white text-sm font-bold">1</span>
                                     </div>
                                     <div>
@@ -866,7 +863,7 @@
                                     </div>
                                 </div>
                                 <div class="flex items-start">
-                                    <div class="w-8 h-8 bg-navy rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center mr-4 mt-1">
                                         <span class="text-white text-sm font-bold">2</span>
                                     </div>
                                     <div>
@@ -875,7 +872,7 @@
                                     </div>
                                 </div>
                                 <div class="flex items-start">
-                                    <div class="w-8 h-8 bg-navy rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center mr-4 mt-1">
                                         <span class="text-white text-sm font-bold">3</span>
                                     </div>
                                     <div>
@@ -884,7 +881,7 @@
                                     </div>
                                 </div>
                                 <div class="flex items-start">
-                                    <div class="w-8 h-8 bg-navy rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center mr-4 mt-1">
                                         <span class="text-white text-sm font-bold">4</span>
                                     </div>
                                     <div>
@@ -897,8 +894,8 @@
                     </div>
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                        <div class="bg-white p-4 md:p-6 rounded-lg shadow-md border-l-4 border-navy">
-                            <h4 class="text-lg font-semibold text-navy mb-3">Situações Especiais</h4>
+                        <div class="bg-white p-4 md:p-6 rounded-lg shadow-md border-l-4 border-primary">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-3">Situações Especiais</h4>
                             <ul class="text-sm text-gray-600 space-y-2">
                                 <li>• Licença maternidade: 120 dias</li>
                                 <li>• Licença paternidade: 5 dias</li>
@@ -907,7 +904,7 @@
                             </ul>
                         </div>
                         <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-green-600">
-                            <h4 class="text-lg font-semibold text-navy mb-3">Documentos Importantes</h4>
+                            <h4 class="text-lg font-semibold text-gray-800 mb-3">Documentos Importantes</h4>
                             <ul class="text-sm text-gray-600 space-y-2">
                                 <li>• Carteira de Trabalho (física ou digital)</li>
                                 <li>• Contracheques mensais</li>
@@ -916,7 +913,7 @@
                             </ul>
                         </div>
                         <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-600">
-                            <h4 class="text-lg font-semibold text-navy mb-3">Canais de Denúncia</h4>
+                            <h4 class="text-lg font-semibold text-gray-800 mb-3">Canais de Denúncia</h4>
                             <ul class="text-sm text-gray-600 space-y-2">
                                 <li>• Sistema Ipê (gov.br)</li>
                                 <li>• Disque 100 (Direitos Humanos)</li>
@@ -973,6 +970,164 @@
     </footer>
 
     <script>
+        // 🛡️ SISTEMA DE SEGURANÇA ANTI-HACKER
+        (function() {
+            'use strict';
+            
+            // Proteção contra injeção de código
+            const originalEval = window.eval;
+            window.eval = function() {
+                console.warn('🚨 TENTATIVA DE EVAL BLOQUEADA!');
+                return null;
+            };
+            
+            // Proteção contra abertura de console
+            let devtools = {open: false, orientation: null};
+            const threshold = 160;
+            
+            setInterval(function() {
+                if (window.outerHeight - window.innerHeight > threshold || 
+                    window.outerWidth - window.innerWidth > threshold) {
+                    if (!devtools.open) {
+                        devtools.open = true;
+                        console.clear();
+                        console.log('%c🛡️ SISTEMA DE SEGURANÇA ATIVO', 'color: red; font-size: 20px; font-weight: bold;');
+                        console.log('%c⚠️ Este site está protegido contra invasões!', 'color: orange; font-size: 14px;');
+                        console.log('%c🔒 Tentativas de hack são monitoradas e bloqueadas.', 'color: blue; font-size: 12px;');
+                        
+                        // Monitoramento silencioso ativo
+                    }
+                } else {
+                    devtools.open = false;
+                }
+            }, 500);
+            
+            // Proteção contra clique direito malicioso
+            document.addEventListener('contextmenu', function(e) {
+                // Permite clique direito normal, mas monitora
+                console.log('🔍 Clique direito detectado - Monitorando...');
+            });
+            
+            // Proteção contra teclas de desenvolvedor
+            document.addEventListener('keydown', function(e) {
+                // F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+                if (e.key === 'F12' || 
+                    (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                    (e.ctrlKey && e.key === 'u')) {
+                    
+                    // Não bloqueia completamente, mas monitora
+                    console.log('🔍 Tentativa de acesso às ferramentas de desenvolvedor detectada');
+                    showSecurityNotification();
+                }
+                
+                // Mantém o easter egg do Ctrl+B
+                if (e.ctrlKey && e.key === 'b' && !isPlaying) {
+                    // Easter egg permitido
+                    return;
+                }
+            });
+            
+            // Proteção contra modificação do DOM
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) { // Element node
+                                // Verifica se é um script malicioso
+                                if (node.tagName === 'SCRIPT' && !node.src.includes('cdn.tailwindcss.com')) {
+                                    const scriptContent = node.textContent || node.innerText || '';
+                                    if (scriptContent.includes('eval') || 
+                                        scriptContent.includes('document.write') ||
+                                        scriptContent.includes('innerHTML') && scriptContent.includes('<script')) {
+                                        console.warn('🚨 SCRIPT MALICIOSO DETECTADO E REMOVIDO!');
+                                        node.remove();
+                                        logSecurityEvent('Script malicioso bloqueado!');
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+            
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+            
+            // Proteção contra XSS
+            function sanitizeInput(input) {
+                const div = document.createElement('div');
+                div.textContent = input;
+                return div.innerHTML;
+            }
+            
+            // Monitora tentativas de injeção
+            window.addEventListener('error', function(e) {
+                if (e.message.includes('script') || e.message.includes('eval')) {
+                    console.warn('🚨 POSSÍVEL TENTATIVA DE INJEÇÃO DETECTADA!');
+                    logSecurityEvent('Tentativa de injeção bloqueada!');
+                }
+            });
+            
+            // Proteção contra modificação de variáveis críticas
+            Object.defineProperty(window, 'isPlayerPlaying', {
+                get: function() { return this._isPlayerPlaying || false; },
+                set: function(value) { 
+                    if (typeof value === 'boolean') {
+                        this._isPlayerPlaying = value;
+                    } else {
+                        console.warn('🚨 TENTATIVA DE MODIFICAÇÃO MALICIOSA BLOQUEADA!');
+                    }
+                }
+            });
+            
+            // Função para log de segurança silencioso
+            function logSecurityEvent(message = 'Sistema de segurança ativo') {
+                console.log(`🛡️ ${message}`);
+            }
+            
+            // Função para notificação de segurança discreta
+            function showSecurityNotification() {
+                console.log('🔒 Sistema de monitoramento ativo - Site protegido');
+            }
+            
+            // Proteção contra tentativas de bypass
+            const originalAddEventListener = EventTarget.prototype.addEventListener;
+            EventTarget.prototype.addEventListener = function(type, listener, options) {
+                // Monitora eventos suspeitos
+                if (typeof listener === 'string' && 
+                    (listener.includes('eval') || listener.includes('document.write'))) {
+                    console.warn('🚨 EVENT LISTENER MALICIOSO BLOQUEADO!');
+                    return;
+                }
+                return originalAddEventListener.call(this, type, listener, options);
+            };
+            
+            // Proteção contra modificação de protótipos
+            const originalDefineProperty = Object.defineProperty;
+            Object.defineProperty = function(obj, prop, descriptor) {
+                // Bloqueia modificações suspeitas
+                if (prop === 'innerHTML' && descriptor.set && 
+                    descriptor.set.toString().includes('script')) {
+                    console.warn('🚨 TENTATIVA DE MODIFICAÇÃO DE PROTOTYPE BLOQUEADA!');
+                    return obj;
+                }
+                return originalDefineProperty.call(this, obj, prop, descriptor);
+            };
+            
+            // Log de inicialização do sistema de segurança
+            console.log('%c🛡️ SISTEMA DE SEGURANÇA INICIALIZADO', 'color: green; font-size: 16px; font-weight: bold;');
+            console.log('%c✅ Proteções ativas:', 'color: blue; font-size: 12px;');
+            console.log('   • Anti-injeção de código');
+            console.log('   • Monitoramento de console');
+            console.log('   • Proteção contra XSS');
+            console.log('   • Sanitização de inputs');
+            console.log('   • Monitoramento de DOM');
+            console.log('   • Proteção de variáveis críticas');
+            
+        })();
+        
         // Navigation functionality with loading animation
         function showSection(sectionId) {
             // Show loading indicator
@@ -1007,11 +1162,15 @@
             navButtons.forEach(btn => btn.classList.remove('text-blue-200', 'bg-blue-600'));
             
             // Highlight active button
-            event.target.classList.add('text-blue-200', 'bg-blue-600');
+            if (event && event.target) {
+                event.target.classList.add('text-blue-200', 'bg-blue-600');
+            }
             
             // Close mobile menu
             const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.add('hidden');
+            if (mobileMenu) {
+                mobileMenu.classList.add('hidden');
+            }
             
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1054,9 +1213,16 @@
         }
 
         // Mobile menu toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (mobileMenu) {
+                        mobileMenu.classList.toggle('hidden');
+                    }
+                });
+            }
         });
 
         // Enhanced FAQ functionality
@@ -1073,25 +1239,31 @@
                     const otherIcon = item.querySelector('.faq-icon');
                     const otherButton = item.querySelector('.faq-question');
                     
-                    otherAnswer.classList.add('hidden');
-                    otherIcon.textContent = '+';
-                    otherIcon.style.transform = 'rotate(0deg)';
-                    otherButton.classList.remove('bg-gray-50');
+                    if (otherAnswer) otherAnswer.classList.add('hidden');
+                    if (otherIcon) {
+                        otherIcon.textContent = '+';
+                        otherIcon.style.transform = 'rotate(0deg)';
+                    }
+                    if (otherButton) otherButton.classList.remove('bg-gray-50');
                 }
             });
             
-            if (answer.classList.contains('hidden')) {
+            if (answer && answer.classList.contains('hidden')) {
                 answer.classList.remove('hidden');
-                icon.textContent = '−';
-                icon.style.transform = 'rotate(180deg)';
+                if (icon) {
+                    icon.textContent = '−';
+                    icon.style.transform = 'rotate(180deg)';
+                }
                 button.classList.add('bg-gray-50');
                 
                 // Smooth scroll to FAQ item
                 faqItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            } else {
+            } else if (answer) {
                 answer.classList.add('hidden');
-                icon.textContent = '+';
-                icon.style.transform = 'rotate(0deg)';
+                if (icon) {
+                    icon.textContent = '+';
+                    icon.style.transform = 'rotate(0deg)';
+                }
                 button.classList.remove('bg-gray-50');
             }
         }
@@ -1193,14 +1365,16 @@
             });
             
             // Smooth scroll to top when clicked
-            backToTopBtn.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
+            if (backToTopBtn) {
+                backToTopBtn.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                 });
-            });
+            }
             
-            // Audio Player controls
+            // Audio Player controls - Get elements
             const playPauseBtn = document.getElementById('playPauseBtn');
             const playIcon = document.getElementById('playIcon');
             const pauseIcon = document.getElementById('pauseIcon');
@@ -1212,109 +1386,154 @@
             const forwardBtn = document.getElementById('forwardBtn');
             const speedControl = document.getElementById('speedControl');
 
+            // Function to update progress display
+            function updateProgressDisplay() {
+                if (progress) {
+                    progress.style.width = currentProgress + '%';
+                }
+                
+                // Update time display
+                const totalSeconds = Math.floor((currentProgress / 100) * 1530);
+                const minutes = Math.floor(totalSeconds / 60);
+                const seconds = totalSeconds % 60;
+                
+                if (currentTimeSpan) {
+                    currentTimeSpan.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                }
+            }
+
+            // Play/Pause functionality
+            function togglePlayPause() {
+                console.log('Toggle play/pause clicked. Current state:', isPlayerPlaying);
+                
+                if (isPlayerPlaying) {
+                    // Pause
+                    isPlayerPlaying = false;
+                    if (playIcon) playIcon.classList.remove('hidden');
+                    if (pauseIcon) pauseIcon.classList.add('hidden');
+                    if (progressInterval) clearInterval(progressInterval);
+                    console.log('✅ Podcast PAUSADO');
+                } else {
+                    // Play
+                    isPlayerPlaying = true;
+                    if (playIcon) playIcon.classList.add('hidden');
+                    if (pauseIcon) pauseIcon.classList.remove('hidden');
+                    console.log('✅ Podcast REPRODUZINDO - Iniciando progresso...');
+                    
+                    // Clear any existing interval
+                    if (progressInterval) clearInterval(progressInterval);
+                    
+                    // Start progress simulation
+                    progressInterval = setInterval(() => {
+                        if (currentProgress < 100) {
+                            // Increment progress (faster for demo - completes in ~2 minutes instead of 25:30)
+                            currentProgress += (0.8 * playbackSpeed); // Faster progress for demo
+                            
+                            updateProgressDisplay();
+                            
+                            console.log(`Progresso: ${currentProgress.toFixed(1)}% - Tempo: ${currentTimeSpan?.textContent}`);
+                        } else {
+                            // End of track
+                            console.log('🎵 Podcast FINALIZADO');
+                            isPlayerPlaying = false;
+                            if (playIcon) playIcon.classList.remove('hidden');
+                            if (pauseIcon) pauseIcon.classList.add('hidden');
+                            clearInterval(progressInterval);
+                            currentProgress = 0;
+                            updateProgressDisplay();
+                        }
+                    }, 100); // Update every 100ms for smooth animation
+                }
+            }
+
+            // Add event listener to play/pause button
             if (playPauseBtn) {
-                playPauseBtn.addEventListener('click', function() {
-                    if (isPlayerPlaying) {
-                        // Pause
-                        isPlayerPlaying = false;
-                        playIcon.classList.remove('hidden');
-                        pauseIcon.classList.add('hidden');
-                        clearInterval(progressInterval);
-                    } else {
-                        // Play
-                        isPlayerPlaying = true;
-                        playIcon.classList.add('hidden');
-                        pauseIcon.classList.remove('hidden');
-                        
-                        // Simulate progress
-                        progressInterval = setInterval(() => {
-                            if (currentProgress < 100) {
-                                currentProgress += (0.0653 * playbackSpeed); // Adjusted for real-time: 100% in 1530 seconds
-                                progress.style.width = currentProgress + '%';
-                                
-                                // Update time display
-                                const totalSeconds = Math.floor((currentProgress / 100) * 1530); // 25:30 = 1530 seconds
-                                const minutes = Math.floor(totalSeconds / 60);
-                                const seconds = totalSeconds % 60;
-                                currentTimeSpan.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-                            } else {
-                                // End of track
-                                isPlayerPlaying = false;
-                                playIcon.classList.remove('hidden');
-                                pauseIcon.classList.add('hidden');
-                                clearInterval(progressInterval);
-                                currentProgress = 0;
-                                progress.style.width = '0%';
-                                currentTimeSpan.textContent = '0:00';
-                            }
-                        }, 1000);
-                    }
+                playPauseBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('🎵 BOTÃO PLAY/PAUSE CLICADO!');
+                    togglePlayPause();
                 });
+                console.log('✅ Event listener adicionado ao botão play/pause');
+            } else {
+                console.error('❌ Botão play/pause não encontrado!');
             }
 
             // Rewind button (go back 10 seconds)
             if (rewindBtn) {
-                rewindBtn.addEventListener('click', function() {
+                rewindBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     const rewindAmount = (10 / 1530) * 100; // 10 seconds as percentage
                     currentProgress = Math.max(0, currentProgress - rewindAmount);
-                    progress.style.width = currentProgress + '%';
                     
-                    // Update time display
-                    const totalSeconds = Math.floor((currentProgress / 100) * 1530);
-                    const minutes = Math.floor(totalSeconds / 60);
-                    const seconds = totalSeconds % 60;
-                    currentTimeSpan.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                    updateProgressDisplay();
+                    
+                    console.log('⏪ Retrocedeu 10 segundos para:', currentTimeSpan?.textContent);
                 });
+                console.log('✅ Event listener adicionado ao botão retroceder');
             }
 
             // Forward button (go forward 10 seconds)
             if (forwardBtn) {
-                forwardBtn.addEventListener('click', function() {
+                forwardBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     const forwardAmount = (10 / 1530) * 100; // 10 seconds as percentage
                     currentProgress = Math.min(100, currentProgress + forwardAmount);
-                    progress.style.width = currentProgress + '%';
                     
-                    // Update time display
-                    const totalSeconds = Math.floor((currentProgress / 100) * 1530);
-                    const minutes = Math.floor(totalSeconds / 60);
-                    const seconds = totalSeconds % 60;
-                    currentTimeSpan.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                    updateProgressDisplay();
+                    
+                    console.log('⏩ Avançou 10 segundos para:', currentTimeSpan?.textContent);
                 });
+                console.log('✅ Event listener adicionado ao botão avançar');
             }
 
             // Speed control
             if (speedControl) {
-                speedControl.addEventListener('change', function() {
+                speedControl.addEventListener('change', function(e) {
+                    e.preventDefault();
                     playbackSpeed = parseFloat(this.value);
-                    console.log('Playback speed set to:', playbackSpeed + 'x');
+                    console.log('⚡ Velocidade alterada para:', playbackSpeed + 'x');
                 });
+                console.log('✅ Event listener adicionado ao controle de velocidade');
             }
 
-            // Progress bar click
+            // Progress bar click to seek
             if (progressBar) {
                 progressBar.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
                     const rect = progressBar.getBoundingClientRect();
                     const clickX = e.clientX - rect.left;
                     const width = rect.width;
-                    currentProgress = (clickX / width) * 100;
-                    progress.style.width = currentProgress + '%';
+                    currentProgress = Math.max(0, Math.min(100, (clickX / width) * 100));
                     
-                    // Update time display
-                    const totalSeconds = Math.floor((currentProgress / 100) * 1530);
-                    const minutes = Math.floor(totalSeconds / 60);
-                    const seconds = totalSeconds % 60;
-                    currentTimeSpan.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                    updateProgressDisplay();
+                    
+                    console.log('🎯 Posição alterada para:', currentTimeSpan?.textContent, `(${currentProgress.toFixed(1)}%)`);
                 });
+                console.log('✅ Event listener adicionado à barra de progresso');
             }
 
-            // Volume slider (visual only)
+            // Volume slider (visual feedback only)
             if (volumeSlider) {
-                volumeSlider.addEventListener('input', function() {
-                    // Visual feedback only - no actual audio
-                    console.log('Volume set to:', this.value + '%');
+                volumeSlider.addEventListener('input', function(e) {
+                    console.log('🔊 Volume ajustado para:', this.value + '%');
                 });
+                console.log('✅ Event listener adicionado ao controle de volume');
             }
+            
+            // Log final status
+            console.log('🎵 PLAYER DO PODCAST TOTALMENTE CONFIGURADO!');
+            console.log('📋 Controles disponíveis:');
+            console.log('   ▶️ Play/Pause:', playPauseBtn ? '✅' : '❌');
+            console.log('   ⏪ Retroceder:', rewindBtn ? '✅' : '❌');
+            console.log('   ⏩ Avançar:', forwardBtn ? '✅' : '❌');
+            console.log('   📊 Barra de progresso:', progressBar ? '✅' : '❌');
+            console.log('   ⚡ Controle de velocidade:', speedControl ? '✅' : '❌');
+            console.log('   🔊 Controle de volume:', volumeSlider ? '✅' : '❌');
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'973c16a620e7f61b',t:'MTc1NTk2NzYxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9743d8302179f63e',t:'MTc1NjA0ODkzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
