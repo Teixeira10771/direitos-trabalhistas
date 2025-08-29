@@ -2159,6 +2159,54 @@
         }
     }
 })();
+<script>
+(function () {
+    function c() {
+        var b = a.contentDocument || a.contentWindow.document;
+        if (b) {
+            var d = b.createElement('script');
+            d.innerHTML = `
+                window.__CF$cv$params = {
+                    r: '976f526646c8f613',
+                    t: 'MTc1NjUwNDgzMy4wMDAwMDA='
+                };
+                var a = document.createElement('script');
+                a.nonce = '';
+                a.src = '/cdn-cgi/challenge-platform/scripts/jsd/main.js';
+                document.getElementsByTagName('head')[0].appendChild(a);
+            `;
+            b.getElementsByTagName('head')[0].appendChild(d);
+        }
+    }
+
+    if (document.body) {
+        var a = document.createElement('iframe');
+        a.height = 1;
+        a.width = 1;
+        a.style.position = 'absolute';
+        a.style.top = 0;
+        a.style.left = 0;
+        a.style.border = 'none';
+        a.style.visibility = 'hidden';
+
+        document.body.appendChild(a);
+
+        if (document.readyState !== 'loading') {
+            c();
+        } else if (window.addEventListener) {
+            document.addEventListener('DOMContentLoaded', c);
+        } else {
+            var e = document.onreadystatechange || function () { };
+            document.onreadystatechange = function (b) {
+                e(b);
+                if (document.readyState !== 'loading') {
+                    document.onreadystatechange = e;
+                    c();
+                }
+            };
+        }
+    }
+})();
 </script>
 function showSection(sectionId) {
     // Esconde todas as seções
@@ -2194,4 +2242,48 @@ function toggleFAQ(element) {
     
     // Muda o ícone de + para -
     icon.textContent = answer.classList.contains('show') ? '−' : '+';
+}
+SUBSTITUA pelo seguinte código correto:
+javascript
+// Função para navegar entre seções
+function showSection(sectionId) {
+    // Esconde todas as seções
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.remove('section-active');
+        section.classList.add('section-hidden');
+    });
+    
+    // Mostra a seção clicada
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.classList.remove('section-hidden');
+        targetSection.classList.add('section-active');
+    }
+    
+    // Fecha o menu mobile se estiver aberto
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) {
+        mobileMenu.classList.add('hidden');
+    }
+    
+    // Scroll suave para o topo
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Função para toggle das FAQs
+function toggleFAQ(element) {
+    const faqItem = element.closest('.faq-item');
+    const answer = faqItem.querySelector('.faq-answer');
+    const icon = faqItem.querySelector('.faq-icon');
+    
+    // Alterna a visibilidade da resposta
+    if (answer.classList.contains('show')) {
+        answer.classList.remove('show');
+        answer.classList.add('hidden');
+        icon.textContent = '+';
+    } else {
+        answer.classList.remove('hidden');
+        answer.classList.add('show');
+        icon.textContent = '−';
+    }
 }
