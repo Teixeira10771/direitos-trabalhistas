@@ -2160,5 +2160,38 @@
     }
 })();
 </script>
-</body>
-</html>
+function showSection(sectionId) {
+    // Esconde todas as seções
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.remove('section-active');
+        section.classList.add('section-hidden');
+    });
+    
+    // Mostra a seção clicada
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.classList.remove('section-hidden');
+        targetSection.classList.add('section-active');
+    }
+    
+    // Fecha o menu mobile se estiver aberto
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) {
+        mobileMenu.classList.add('hidden');
+    }
+    
+    // Scroll suave para o topo
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleFAQ(element) {
+    const faqItem = element.closest('.faq-item');
+    const answer = faqItem.querySelector('.faq-answer');
+    const icon = faqItem.querySelector('.faq-icon');
+    
+    // Alterna a visibilidade da resposta
+    answer.classList.toggle('show');
+    
+    // Muda o ícone de + para -
+    icon.textContent = answer.classList.contains('show') ? '−' : '+';
+}
